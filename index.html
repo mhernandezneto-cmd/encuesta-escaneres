@@ -482,9 +482,11 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
       <div id="dash-sections"></div>
     </div>
 
-    <!-- Fila 3: Recomendaciones continuación (span 2) -->
-    <div style="grid-column:span 2;display:none"></div>
-    <div style="display:none"></div>
+    <!-- Fila 3: Tendencia recomendaciones -->
+    <div style="grid-column:span 3;background:#0d1b2e;border:1px solid #1e3050;border-top:3px solid #10b981;border-radius:12px;padding:16px">
+      <div style="font-size:11px;font-weight:800;color:#10b981;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">TENDENCIA DE RECOMENDACIONES EN EL TIEMPO</div>
+      <div id="dash-trend"></div>
+    </div>
 
     <div id="dash-kpis" style="display:none"></div>
   </div>
@@ -1095,6 +1097,71 @@ function renderDashboard(rows){
     </div>`
 
   renderDashboard(rows);
+
+  // ── Tendencia de recomendaciones en el tiempo ──
+  const trendEl=document.getElementById('dash-trend');
+  if(trendEl){
+    // Group rows by date (day) and count recommendations
+    const byDate={};
+    rows.forEach(r=>{
+      const d=r.Fecha?String(r.Fecha).split(' ')[0]:'Sin fecha';
+      if(!byDate[d])byDate[d]={Recomendado:0,'Solo ciertos procesos':0,'No recomendado':0,total:0};
+      if(byDate[d][r.Recomendacion]!==undefined){byDate[d][r.Recomendacion]++;byDate[d].total++;}
+    });
+    const dates=Object.keys(byDate).sort();
+    const w=trendEl.offsetWidth||800;
+    const h=180;
+    const pad={t:20,r:10,b:40,l:40};
+    const cw=w-pad.l-pad.r;
+    const ch=h-pad.t-pad.b;
+    const cats=['Recomendado','Solo ciertos procesos','No recomendado'];
+    const cols=['#10b981','#f97316','#ef4444'];
+    const n=dates.length;
+    if(n===0){trendEl.innerHTML='<div style="color:#475569;font-size:13px;padding:20px;text-align:center">Sin datos suficientes para mostrar tendencia</div>';}
+    else{
+      // Build stacked area paths
+      // For each date compute cumulative %
+      const pcts=dates.map(d=>{
+        const tot=byDate[d].total||1;
+        return cats.map(c=>(byDate[d][c]||0)/tot*100);
+      });
+      // cumulative stacks
+      const stacks=dates.map((_,i)=>{
+        let cum=0;
+        return cats.map((_,ci)=>{cum+=pcts[i][ci];return cum;});
+      });
+      const xScale=i=>pad.l+(n===1?cw/2:i*(cw/(n-1)));
+      const yScale=v=>pad.t+(1-v/100)*ch;
+      // Build SVG paths for each category (bottom to top)
+      let svgPaths='';
+      for(let ci=cats.length-1;ci>=0;ci--){
+        const topPoints=dates.map((_,i)=>`${xScale(i)},${yScale(stacks[i][ci])}`).join(' ');
+        const botPoints=ci===0
+          ?dates.map((_,i)=>`${xScale(i)},${yScale(0)}`).reverse().join(' ')
+          :dates.map((_,i)=>`${xScale(i)},${yScale(stacks[i][ci-1])}`).reverse().join(' ');
+        svgPaths+=`<polygon points="${topPoints} ${botPoints}" fill="${cols[ci]}" opacity="0.85"/>`;
+        // Add line on top
+        svgPaths+=`<polyline points="${topPoints}" fill="none" stroke="${cols[ci]}" stroke-width="2"/>`;
+      }
+      // X axis labels
+      let xLabels='';
+      const step=Math.max(1,Math.floor(n/6));
+      for(let i=0;i<n;i+=step){
+        xLabels+=`<text x="${xScale(i)}" y="${h-8}" text-anchor="middle" fill="#475569" font-size="10" font-family="Barlow,sans-serif">${dates[i]}</text>`;
+      }
+      // Y axis labels
+      let yLabels='';
+      [0,25,50,75,100].forEach(v=>{
+        yLabels+=`<text x="${pad.l-6}" y="${yScale(v)+4}" text-anchor="end" fill="#475569" font-size="10" font-family="Barlow,sans-serif">${v}%</text>`;
+        yLabels+=`<line x1="${pad.l}" y1="${yScale(v)}" x2="${pad.l+cw}" y2="${yScale(v)}" stroke="#1e3050" stroke-width="0.5"/>`;
+      });
+      // Legend
+      const legendX=pad.l;
+      const legendY=h-12;
+      let legend=cats.map((c,ci)=>`<rect x="${legendX+ci*140}" y="${legendY-8}" width="10" height="10" fill="${cols[ci]}" rx="2"/><text x="${legendX+ci*140+14}" y="${legendY}" fill="#94a3b8" font-size="11" font-family="Barlow,sans-serif">${c}</text>`).join('');
+      trendEl.innerHTML=`<svg width="100%" height="${h}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" style="overflow:visible">${yLabels}${svgPaths}${xLabels}</svg><svg width="100%" height="24" viewBox="0 0 ${w} 24">${legend}</svg>`;
+    }
+  }
 }
 
 async function loadDashboard(){
@@ -1111,7 +1178,7 @@ async function loadDashboard(){
   }
   if(!rows||rows.length===0){
     document.getElementById('dash-updated').textContent='Sin datos todavía';
-    ['dash-winner','dash-total-encuestas','dash-rec','dash-sections','dash-cedis-chart'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div style="color:#475569;font-size:13px;padding:20px;text-align:center">Sin datos</div>';});
+    ['dash-winner','dash-total-encuestas','dash-rec','dash-sections','dash-cedis-chart','dash-trend'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div style="color:#475569;font-size:13px;padding:20px;text-align:center">Sin datos</div>';});
     return;
   }
   allRows=rows;
