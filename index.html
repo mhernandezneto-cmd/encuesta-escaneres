@@ -1081,8 +1081,9 @@ function renderDashboard(rows){
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
         ${SECTIONS.map(sec=>{
           const qids=sec.questions.map(q=>'P_'+q.id);
-          const vals=sr.flatMap(r=>qids.map(k=>parseFloat(r[k])).filter(x=>!isNaN(x)&&x>0));
-          const avg=vals.length?(vals.reduce((a,b)=>a+b,0)/vals.length):0;
+          let _sum=0,_cnt=0;
+          sr.forEach(r=>{ qids.forEach(k=>{ const v=parseFloat(r[k]); if(!isNaN(v)&&v>0){_sum+=v;_cnt++;} }); });
+          const avg=_cnt>0?(_sum/_cnt):0;
           const col=barColor(avg);
           return`<div style="background:#0f172a;border-radius:12px;padding:24px 10px;text-align:center">
             <div style="font-size:88px;margin-bottom:12px">${sec.icon}</div>
