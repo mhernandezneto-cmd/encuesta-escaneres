@@ -1073,27 +1073,34 @@ function renderDashboard(rows){
     </div>`;
 
   // Secciones
-  document.getElementById('dash-sections').innerHTML=SCANNERS.map(s=>{
+  // Secciones - compute outside template literal
+  const sectionsHTML=SCANNERS.map(s=>{
     const sr=rows.filter(r=>r.Escaner===s.name);
-    if(!sr.length)return'';
-    return`<div style="background:#1e293b;border-radius:10px;padding:12px 14px;margin-bottom:10px">
-      <div style="font-weight:800;font-size:79px;color:${s.color};margin-bottom:14px">${s.icon} ${s.name}</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
-        ${SECTIONS.map(sec=>{
-          const qids=sec.questions.map(q=>'P_'+q.id);
-          let _sum=0,_cnt=0;
-          sr.forEach(r=>{ qids.forEach(k=>{ const v=parseFloat(r[k]); if(!isNaN(v)&&v>0){_sum+=v;_cnt++;} }); });
-          const avg=_cnt>0?(_sum/_cnt):0;
-          const col=barColor(avg);
-          return`<div style="background:#0f172a;border-radius:12px;padding:24px 10px;text-align:center">
-            <div style="font-size:88px;margin-bottom:12px">${sec.icon}</div>
-            <div style="font-size:36px;font-weight:800;color:${col};line-height:1">${avg>0?avg.toFixed(1):'—'}</div>
-            <div style="font-size:14px;color:#94a3b8;line-height:1.3;margin-top:6px">${sec.title}</div>
-          </div>`;
-        }).join('')}
-      </div>
+    if(!sr.length) return '';
+    const secData=SECTIONS.map(sec=>{
+      const qids=sec.questions.map(q=>'P_'+q.id);
+      let sum=0,cnt=0;
+      for(let ri=0;ri<sr.length;ri++){
+        for(let qi=0;qi<qids.length;qi++){
+          const v=parseFloat(sr[ri][qids[qi]]);
+          if(!isNaN(v)&&v>0){sum+=v;cnt++;}
+        }
+      }
+      const avg=cnt>0?(sum/cnt):0;
+      const col=barColor(avg);
+      return {title:sec.title,icon:sec.icon,avg,col};
+    });
+    const cards=secData.map(d=>`<div style="background:#0f172a;border-radius:12px;padding:24px 10px;text-align:center">
+      <div style="font-size:88px;margin-bottom:12px">${d.icon}</div>
+      <div style="font-size:36px;font-weight:800;color:${d.col};line-height:1">${d.avg>0?d.avg.toFixed(1):'—'}</div>
+      <div style="font-size:14px;color:#94a3b8;line-height:1.3;margin-top:6px">${d.title}</div>
+    </div>`).join('');
+    return `<div style="background:#1e293b;border-radius:10px;padding:12px 14px;margin-bottom:10px">
+      <div style="font-weight:800;font-size:20px;color:${s.color};margin-bottom:14px">${s.icon} ${s.name}</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">${cards}</div>
     </div>`;
   }).join('');
+  document.getElementById('dash-sections').innerHTML=sectionsHTML;
 
   // Contar personas unicas (un empleado puede tener 3 registros, uno por escaner)
   const personasTotal=[...new Set(rows.map(r=>r.NumEmpleado).filter(Boolean))].length;
