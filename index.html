@@ -490,8 +490,26 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
 
   </div>
 
-  <!-- VISTA 2: Promedio secciones + Tendencia -->
-  <div id="dash-page2" style="padding:16px;display:none;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:calc(100vh - 90px);box-sizing:border-box">
+  <!-- VISTA 2 -->
+  <div id="dash-page2" style="padding:16px;display:none;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:14px;height:calc(100vh - 90px);box-sizing:border-box;overflow-y:auto">
+
+    <!-- Semaforo (span 1) -->
+    <div style="background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #f97316;border-radius:14px;padding:20px">
+      <div style="font-size:12px;font-weight:800;color:#f97316;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">SEMÁFORO DE SECCIONES</div>
+      <div id="dash-semaforo"></div>
+    </div>
+
+    <!-- Ranking (span 1) -->
+    <div style="background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #10b981;border-radius:14px;padding:20px">
+      <div style="font-size:12px;font-weight:800;color:#10b981;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">RANKING DE ESCÁNERES</div>
+      <div id="dash-ranking"></div>
+    </div>
+
+    <!-- Preguntas criticas (span 1) -->
+    <div style="background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #ef4444;border-radius:14px;padding:20px;overflow-y:auto">
+      <div style="font-size:12px;font-weight:800;color:#ef4444;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">PREGUNTAS CRÍTICAS</div>
+      <div id="dash-critical"></div>
+    </div>
 
     <!-- Promedio secciones (span 2) -->
     <div style="grid-column:span 2;background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #a855f7;border-radius:14px;padding:20px">
@@ -499,9 +517,9 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
       <div id="dash-sections"></div>
     </div>
 
-    <!-- Tendencia (span 2) -->
-    <div style="grid-column:span 2;background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #10b981;border-radius:14px;padding:20px">
-      <div style="font-size:12px;font-weight:800;color:#10b981;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">TENDENCIA DE RECOMENDACIONES EN EL TIEMPO</div>
+    <!-- Tendencia (span 1) -->
+    <div style="background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #10b981;border-radius:14px;padding:20px">
+      <div style="font-size:12px;font-weight:800;color:#10b981;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">TENDENCIA</div>
       <div id="dash-trend"></div>
     </div>
 
@@ -1235,6 +1253,90 @@ function renderDashboard(rows){
     }).join('');
     secBarsEl.innerHTML=secBarsHTML;
   }
+
+  // ── Semáforo de secciones ──
+  const semaforoEl=document.getElementById('dash-semaforo');
+  if(semaforoEl){
+    const semColor=v=>v>=3.5?'#10b981':v>=2.5?'#eab308':'#ef4444';
+    const semLabel=v=>v>=3.5?'Bueno':v>=2.5?'Regular':'Malo';
+    // Header row
+    let html='<table style="width:100%;border-collapse:separate;border-spacing:4px">';
+    html+='<tr><td style="font-size:13px;color:#475569;padding:4px 8px"></td>';
+    SCANNERS.forEach(s=>{ html+='<td style="text-align:center;font-size:14px;font-weight:800;color:'+s.color+';padding:6px 4px">'+s.icon+' '+s.name+'</td>'; });
+    html+='</tr>';
+    SECTIONS.forEach(sec=>{
+      html+='<tr><td style="font-size:14px;font-weight:700;color:#94a3b8;padding:6px 8px;white-space:nowrap">'+sec.icon+' '+sec.title+'</td>';
+      SCANNERS.forEach(s=>{
+        const sr=rows.filter(r=>r.Escaner===s.name);
+        const qids=sec.questions.map(q=>'P_'+q.id);
+        let sum=0,cnt=0;
+        for(let ri=0;ri<sr.length;ri++){ for(let qi=0;qi<qids.length;qi++){ const v=parseFloat(sr[ri][qids[qi]]); if(!isNaN(v)&&v>0){sum+=v;cnt++;} } }
+        const avg=cnt>0?(sum/cnt):0;
+        const col=semColor(avg);
+        html+='<td style="text-align:center;padding:4px"><div style="background:'+col+';border-radius:20px;padding:8px 6px;margin:0 auto;min-width:60px"><div style="font-size:16px;font-weight:800;color:#fff">'+( avg>0?avg.toFixed(1):'—')+'</div><div style="font-size:10px;color:#ffffff99">'+semLabel(avg)+'</div></div></td>';
+      });
+      html+='</tr>';
+    });
+    html+='</table>';
+    html+='<div style="display:flex;gap:12px;margin-top:12px;font-size:12px;font-family:Barlow,sans-serif"><span>🟢 Bueno ≥3.5</span><span>🟡 Regular 2.5-3.4</span><span>🔴 Malo &lt;2.5</span></div>';
+    semaforoEl.innerHTML=html;
+  }
+
+  // ── Ranking de escáneres ──
+  const rankingEl=document.getElementById('dash-ranking');
+  if(rankingEl){
+    const ranked=SCANNERS.map(s=>{
+      const sr=rows.filter(r=>r.Escaner===s.name);
+      const avgs=sr.map(r=>parseFloat(r.Promedio)).filter(x=>!isNaN(x));
+      const avg=avgs.length?(avgs.reduce((a,b)=>a+b,0)/avgs.length):0;
+      return{...s,avg,count:sr.length};
+    }).sort((a,b)=>b.avg-a.avg);
+    const medals=['🥇','🥈','🥉'];
+    const barColors=['#f97316','#eab308','#64748b'];
+    let html='';
+    ranked.forEach((s,i)=>{
+      const pct=(s.avg/5)*100;
+      const col=s.avg>=3.5?'#10b981':s.avg>=2.5?'#eab308':'#ef4444';
+      html+='<div style="margin-bottom:20px">';
+      html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">';
+      html+='<div style="font-size:18px;font-weight:800;color:'+s.color+'">'+medals[i]+' '+s.icon+' '+s.name+'</div>';
+      html+='<div style="font-size:28px;font-weight:800;color:'+col+'">'+( s.avg>0?s.avg.toFixed(2):'—')+'</div>';
+      html+='</div>';
+      html+='<div style="background:#080f1e;border-radius:6px;height:14px;overflow:hidden">';
+      html+='<div class="bar-fill" style="height:100%;background:'+col+';border-radius:6px;--w:'+pct+'%;width:'+pct+'%"></div>';
+      html+='</div>';
+      html+='<div style="font-size:12px;color:#475569;margin-top:4px;font-family:Barlow,sans-serif">'+s.count+' evaluaciones · /5.00</div>';
+      html+='</div>';
+    });
+    rankingEl.innerHTML=html;
+  }
+
+  // ── Preguntas críticas ──
+  const criticalEl=document.getElementById('dash-critical');
+  if(criticalEl){
+    let allQAvgs=[];
+    SCANNERS.forEach(s=>{
+      const sr=rows.filter(r=>r.Escaner===s.name);
+      if(!sr.length) return;
+      ALL_QS.forEach(q=>{
+        let sum=0,cnt=0;
+        sr.forEach(r=>{ const v=parseFloat(r['P_'+q.id]); if(!isNaN(v)&&v>0){sum+=v;cnt++;} });
+        if(cnt>0) allQAvgs.push({scanner:s.name,scolor:s.color,sicon:s.icon,q:q.text,avg:sum/cnt});
+      });
+    });
+    allQAvgs.sort((a,b)=>a.avg-b.avg);
+    const worst=allQAvgs.slice(0,6);
+    let html='<div style="font-size:12px;color:#64748b;font-family:Barlow,sans-serif;margin-bottom:10px">Las 6 preguntas con menor calificación</div>';
+    worst.forEach(w=>{
+      const col=w.avg>=3.5?'#10b981':w.avg>=2.5?'#eab308':'#ef4444';
+      html+='<div style="background:#080f1e;border-radius:8px;padding:10px 12px;margin-bottom:8px;border-left:3px solid '+col+'">';
+      html+='<div style="font-size:11px;color:'+w.scolor+';font-weight:700;margin-bottom:3px">'+w.sicon+' '+w.scanner+'</div>';
+      html+='<div style="font-size:13px;color:#f1f5f9;margin-bottom:4px">'+w.q+'</div>';
+      html+='<div style="font-size:20px;font-weight:800;color:'+col+'">'+w.avg.toFixed(2)+' <span style="font-size:11px;color:#475569">/5.00</span></div>';
+      html+='</div>';
+    });
+    criticalEl.innerHTML=html;
+  }
 }
 
 async function loadDashboard(){
@@ -1251,7 +1353,7 @@ async function loadDashboard(){
   }
   if(!rows||rows.length===0){
     document.getElementById('dash-updated').textContent='Sin datos todavía';
-    ['dash-winner','dash-total-encuestas','dash-rec','dash-sections','dash-cedis-chart','dash-trend','dash-sec-bars'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div style="color:#475569;font-size:13px;padding:20px;text-align:center">Sin datos</div>';});
+    ['dash-winner','dash-total-encuestas','dash-rec','dash-sections','dash-cedis-chart','dash-trend','dash-sec-bars','dash-semaforo','dash-ranking','dash-critical'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div style="color:#475569;font-size:13px;padding:20px;text-align:center">Sin datos</div>';});
     return;
   }
   allRows=rows;
