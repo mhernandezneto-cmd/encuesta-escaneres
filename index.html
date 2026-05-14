@@ -67,7 +67,7 @@ textarea{resize:vertical}
 /* ── CeDis buttons ── */
 .cedis-btn{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 8px;color:var(--text);display:flex;flex-direction:column;align-items:center;gap:8px;transition:all .2s cubic-bezier(.22,1,.36,1);width:100%}
 .cedis-btn:hover{border-color:var(--orange);background:var(--card2);transform:translateY(-3px);box-shadow:0 8px 24px #f9731618}
-.cedis-btn .icon{font-size:22px;filter:drop-shadow(0 2px 4px #00000040)}
+.cedis-btn .icon{font-size:38px;filter:drop-shadow(0 2px 4px #00000040)}
 .cedis-btn .name{font-weight:800;font-size:16px;letter-spacing:.3px}
 
 /* ── Scanner buttons ── */
@@ -191,16 +191,16 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
   </div>
   <div class="content">
     <div class="card orange" style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
-      <span style="font-size:72px">👷</span>
+      <span style="font-size:24px">👷</span>
       <div>
-        <div style="font-size:58px;font-weight:800;color:#f97316">Datos del operador</div>
-        <div style="font-size:56px;color:#94a3b8;font-family:'Barlow',sans-serif;margin-top:2px">Estos datos identifican tu evaluación. Los tres campos son obligatorios.</div>
+        <div style="font-size:19px;font-weight:800;color:#f97316">Datos del operador</div>
+        <div style="font-size:18px;color:#94a3b8;font-family:'Barlow',sans-serif;margin-top:2px">Estos datos identifican tu evaluación. Los tres campos son obligatorios.</div>
       </div>
     </div>
 
     <div class="field">
       <div class="field-hdr">
-        <span style="font-size:74px">🪪</span>
+        <span style="font-size:24px">🪪</span>
         <div>
           <div class="field-label">Número de empleado</div>
           <div class="field-hint">Solo números · máximo 8 dígitos</div>
@@ -213,7 +213,7 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
 
     <div class="field">
       <div class="field-hdr">
-        <span style="font-size:68px">👤</span>
+        <span style="font-size:22px">👤</span>
         <div>
           <div class="field-label">Nombre completo</div>
           <div class="field-hint">Escribe tu nombre tal como aparece en tu credencial</div>
@@ -225,7 +225,7 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
 
     <div class="field">
       <div class="field-hdr">
-        <span style="font-size:68px">📋</span>
+        <span style="font-size:22px">📋</span>
         <div>
           <div class="field-label">Puesto</div>
           <div class="field-hint">Tu cargo o función actual en el CeDis</div>
@@ -258,7 +258,7 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
   </div>
   <div class="content">
     <div id="emp-summary" class="emp-chip">
-      <span style="font-size:79px">👷</span>
+      <span style="font-size:19px">👷</span>
       <div style="flex:1">
         <div class="emp-name" id="sum-nombre"></div>
         <div class="emp-sub" id="sum-sub"></div>
@@ -266,8 +266,8 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
       <button class="edit-btn" onclick="goTo('s-empleado')">EDITAR</button>
     </div>
     <div class="card orange" style="margin-bottom:20px">
-      <div style="font-size:81px;font-weight:800;color:#f97316;margin-bottom:8px">Evaluarás los 3 escáneres</div>
-      <div style="font-size:74px;color:#94a3b8;font-family:'Barlow',sans-serif;line-height:1.6">Al terminar cada uno te pasaremos automáticamente al siguiente. Empieza con el que usaste primero.</div>
+      <div style="font-size:20px;font-weight:800;color:#f97316;margin-bottom:8px">Evaluarás los 3 escáneres</div>
+      <div style="font-size:18px;color:#94a3b8;font-family:'Barlow',sans-serif;line-height:1.6">Al terminar cada uno te pasaremos automáticamente al siguiente. Empieza con el que usaste primero.</div>
     </div>
     <div class="lbl">¿Con cuál empiezas?</div>
     <div class="grid1" id="scanner-list"></div>
@@ -405,32 +405,45 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
 
 <!-- ══ SCREEN: ADMIN LOGIN ══ -->
 <div id="s-admin-login" class="screen">
-  <div class="hdr">
-    <div class="hdr-top">
-      <div>
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:3px">
-          <span class="badge">ADMINISTRADOR</span><span class="sub-label">NETO · CEDIS PICKEO</span>
-        </div>
-        <h1>DASHBOARD DE RESULTADOS</h1>
-        <div class="hdr-sub">Acceso restringido</div>
-      </div>
-    </div>
+  <!-- minimal header -->
+  <div style="background:#0d1b2e;border-bottom:1px solid #1e3050;padding:10px 20px;display:flex;align-items:center;gap:10px">
+    <span style="background:#f97316;color:#fff;font-size:10px;font-weight:800;padding:2px 8px;letter-spacing:2px;border-radius:3px">ADMINISTRADOR</span>
+    <span style="color:#475569;font-size:11px;letter-spacing:1px">NETO · CEDIS PICKEO</span>
   </div>
-  <div class="content">
-    <div class="card orange" style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
-      <span style="font-size:72px">🔒</span>
-      <div>
-        <div style="font-size:58px;font-weight:800;color:#f97316">Área de administrador</div>
-        <div style="font-size:56px;color:#94a3b8;font-family:'Barlow',sans-serif;margin-top:2px">Ingresa la contraseña para ver los resultados.</div>
+
+  <!-- centered login card -->
+  <div style="min-height:calc(100vh - 42px);display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 30%,#1a2840 0%,#080f1e 70%)">
+    <div style="background:#0d1b2e;border:1px solid #1e3050;border-radius:20px;padding:48px 40px;width:100%;max-width:420px;box-shadow:0 24px 64px #00000060;text-align:center">
+
+      <!-- Logo / icono -->
+      <div style="width:72px;height:72px;background:linear-gradient(135deg,#ea6a0a,#f97316);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 20px">🔒</div>
+
+      <div style="font-size:22px;font-weight:800;color:#f1f5f9;margin-bottom:6px;letter-spacing:-.3px">Dashboard de Resultados</div>
+      <div style="font-size:13px;color:#475569;font-family:Barlow,sans-serif;margin-bottom:32px">Ingresa tu contraseña para continuar</div>
+
+      <!-- Input -->
+      <div style="position:relative;margin-bottom:12px">
+        <input id="inp-admin-pass" type="password" placeholder="Contraseña"
+          style="width:100%;background:#080f1e;border:1px solid #1e3050;border-radius:10px;color:#f1f5f9;padding:14px 16px;font-size:15px;font-family:Barlow,sans-serif;outline:none;box-sizing:border-box;transition:border-color .2s"
+          onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#1e3050'"
+          onkeydown="if(event.key==='Enter')checkAdminPass()"/>
       </div>
-    </div>
-    <div class="field">
-      <input id="inp-admin-pass" class="txt" type="password" placeholder="Contraseña" onkeydown="if(event.key==='Enter')checkAdminPass()"/>
-      <div id="admin-pass-err" style="color:#ef4444;font-size:56px;margin-top:6px;font-family:'Barlow',sans-serif;display:none">Contraseña incorrecta.</div>
-    </div>
-    <div class="nav-row">
-      <button class="btn-back" onclick="goTo('s-cedis')">← SALIR</button>
-      <button class="btn-next" style="background:#f97316;color:#fff" onclick="checkAdminPass()">ENTRAR →</button>
+      <div id="admin-pass-err" style="color:#ef4444;font-size:12px;margin-bottom:12px;font-family:Barlow,sans-serif;display:none">⚠️ Contraseña incorrecta. Intenta de nuevo.</div>
+
+      <!-- Botón entrar -->
+      <button onclick="checkAdminPass()"
+        style="width:100%;background:linear-gradient(135deg,#ea6a0a,#f97316);border:none;border-radius:10px;padding:14px;color:#fff;font-size:15px;font-weight:800;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s;box-shadow:0 4px 16px #f9731644;margin-bottom:12px"
+        onmouseover="this.style.opacity='.9'" onmouseout="this.style.opacity='1'">
+        ENTRAR →
+      </button>
+
+      <!-- Link volver -->
+      <button onclick="goTo('s-cedis')"
+        style="background:transparent;border:none;color:#475569;font-size:13px;cursor:pointer;font-family:Barlow,sans-serif;transition:color .2s"
+        onmouseover="this.style.color='#94a3b8'" onmouseout="this.style.color='#475569'">
+        ← Volver al inicio
+      </button>
+
     </div>
   </div>
 </div>
