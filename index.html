@@ -532,6 +532,8 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
   </div>
 
   <div id="dash-kpis" style="display:none"></div>
+  <div id="dash-sections" style="display:none"></div>
+  <div id="dash-sec-bars" style="display:none"></div>
 
 <script>
 // ══ DATA ══
@@ -1124,7 +1126,7 @@ function renderDashboard(rows){
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">${cards}</div>
     </div>`;
   }).join('');
-  document.getElementById('dash-sections').innerHTML=sectionsHTML;
+  const secEl=document.getElementById('dash-sections'); if(secEl) secEl.innerHTML=sectionsHTML;
 
   // Contar personas unicas (un empleado puede tener 3 registros, uno por escaner)
   const personasTotal=[...new Set(rows.map(r=>r.NumEmpleado).filter(Boolean))].length;
