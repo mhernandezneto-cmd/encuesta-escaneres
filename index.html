@@ -448,12 +448,7 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
       <div style="font-size:13px;color:#475569;font-family:Barlow,sans-serif;margin-top:2px" id="dash-updated">Cargando...</div>
     </div>
     <div style="display:flex;gap:10px;align-items:center">
-      <!-- Navegacion entre pantallas -->
-      <div style="display:flex;gap:4px;background:#1e293b;border-radius:8px;padding:4px">
-        <button id="btn-page1" onclick="showPage(1)" style="background:#f97316;border:none;border-radius:6px;padding:8px 16px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px">● VISTA 1</button>
-        <button id="btn-page2" onclick="showPage(2)" style="background:transparent;border:none;border-radius:6px;padding:8px 16px;color:#64748b;font-size:13px;font-weight:700;cursor:pointer;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px">○ VISTA 2</button>
-      </div>
-      <div style="width:1px;height:30px;background:#334155"></div>
+
       <button onclick="loadDashboard()" style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 18px;color:#94a3b8;font-size:13px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='#f97316';this.style.color='#f97316'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">↻ ACTUALIZAR</button>
       <button onclick="downloadExcel()" style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 18px;color:#94a3b8;font-size:13px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='#10b981';this.style.color='#10b981'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">↓ EXCEL</button>
       <button onclick="goTo('s-cedis')" style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 18px;color:#94a3b8;font-size:13px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='#ef4444';this.style.color='#ef4444'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">← SALIR</button>
@@ -507,34 +502,8 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
 
   </div>
 
-  <!-- VISTA 2 -->
-  <div id="dash-page2" style="padding:16px;display:none;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:14px;height:calc(100vh - 90px);box-sizing:border-box;overflow-y:auto">
 
-    <!-- Semaforo (span 1) -->
-    <div style="background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #f97316;border-radius:14px;padding:20px">
-      <div style="font-size:12px;font-weight:800;color:#f97316;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">SEMÁFORO DE SECCIONES</div>
-      <div id="dash-semaforo"></div>
-    </div>
 
-    <!-- Ranking (span 1) -->
-    <div style="background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #10b981;border-radius:14px;padding:20px">
-      <div style="font-size:12px;font-weight:800;color:#10b981;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">RANKING DE ESCÁNERES</div>
-      <div id="dash-ranking"></div>
-    </div>
-
-    <!-- Preguntas criticas (span 1) -->
-    <div style="background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #ef4444;border-radius:14px;padding:20px;overflow-y:auto">
-      <div style="font-size:12px;font-weight:800;color:#ef4444;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">PREGUNTAS CRÍTICAS</div>
-      <div id="dash-critical"></div>
-    </div>
-
-    <!-- Tendencia (span 1) -->
-    <div style="background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #10b981;border-radius:14px;padding:20px">
-      <div style="font-size:12px;font-weight:800;color:#10b981;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">TENDENCIA</div>
-      <div id="dash-trend"></div>
-    </div>
-
-  </div>
 
   <div id="dash-kpis" style="display:none"></div>
   <div id="dash-sections" style="display:none"></div>
@@ -990,21 +959,7 @@ document.getElementById('btn-emp-next').onclick=function(){
 // ══ ADMIN ══
 const ADMIN_PASS='neto2024';
 
-function showPage(n){
-  const p1=document.getElementById('dash-page1');
-  const p2=document.getElementById('dash-page2');
-  const b1=document.getElementById('btn-page1');
-  const b2=document.getElementById('btn-page2');
-  if(n===1){
-    p1.style.display='grid'; p2.style.display='none';
-    b1.style.background='#f97316'; b1.style.color='#fff'; b1.textContent='● VISTA 1';
-    b2.style.background='transparent'; b2.style.color='#64748b'; b2.textContent='○ VISTA 2';
-  } else {
-    p1.style.display='none'; p2.style.display='grid';
-    b2.style.background='#f97316'; b2.style.color='#fff'; b2.textContent='● VISTA 2';
-    b1.style.background='transparent'; b1.style.color='#64748b'; b1.textContent='○ VISTA 1';
-  }
-}
+
 
 function checkAdminPass(){
   const val=document.getElementById('inp-admin-pass').value;
