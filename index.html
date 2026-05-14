@@ -461,6 +461,7 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
   <div style="padding:12px 16px;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto auto;gap:12px;height:calc(100vh - 80px);overflow:hidden">
 
     <!-- ROW 1: Mejor evaluado | Total personas | Participacion CeDis -->
+    <div id="dash-kpis" style="display:none"></div>
     <div id="dash-winner" style="background:#162032;border-radius:12px;border:1px solid #1e3050;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"></div>
 
     <div id="dash-total-encuestas" style="background:#162032;border-radius:12px;border:1px solid #f9731633;padding:16px;display:flex;flex-direction:column;justify-content:center"></div>
@@ -957,8 +958,7 @@ function renderDashboard(rows){
   const employees=[...new Set(rows.map(r=>r.NumEmpleado).filter(Boolean))].length;
   const allAvgs=rows.map(r=>parseFloat(r.Promedio)).filter(x=>!isNaN(x));
   const globalAvg=allAvgs.length?(allAvgs.reduce((a,b)=>a+b,0)/allAvgs.length).toFixed(2):'—';
-  document.getElementById('dash-kpis').innerHTML='';
-
+  
   // Ganador
   const scannerAvgs=SCANNERS.map(s=>{
     const sr=rows.filter(r=>r.Escaner===s.name);
@@ -1127,8 +1127,7 @@ async function ejecutarBorrado(){
     const el=document.getElementById(id);
     if(el)el.innerHTML='';
   });
-  document.getElementById('dash-kpis').innerHTML='';
-  document.getElementById('dash-updated').textContent='Datos borrados · '+new Date().toLocaleTimeString('es-MX');
+    document.getElementById('dash-updated').textContent='Datos borrados · '+new Date().toLocaleTimeString('es-MX');
   // Reload to confirm
   setTimeout(()=>loadDashboard(),800);
 }
