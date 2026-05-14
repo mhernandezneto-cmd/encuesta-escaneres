@@ -972,23 +972,22 @@ function renderDashboard(rows){
 
   // Barras por escaner
   document.getElementById('dash-scanner-bars').innerHTML=`
-    <div style="display:flex;gap:20px;align-items:flex-end;justify-content:center;height:300px;padding:0 20px">
+    <div style="display:flex;gap:20px;align-items:flex-end;justify-content:center;height:320px;padding:0 20px">
       ${SCANNERS.map(s=>{
         const sr=rows.filter(r=>r.Escaner===s.name);
         const avgs=sr.map(r=>parseFloat(r.Promedio)).filter(x=>!isNaN(x));
         const avg=sr.length&&avgs.length?(avgs.reduce((a,b)=>a+b,0)/avgs.length):0;
-        const pct=(avg/5)*100;
+        const pct=Math.max((avg/5)*100, 8);
         const col=barColor(avg);
         const opacity=sr.length?1:0.3;
-        return`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:${opacity}">
-          <div style="width:100%;flex:1;background:#0f172a;border-radius:10px 10px 4px 4px;position:relative;overflow:hidden;min-height:20px">
-            <div class="bar-fill" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,${col}cc,${col});border-radius:10px 10px 4px 4px;--w:${pct}%;height:${pct}%">
-              <div style="position:absolute;top:12px;left:0;right:0;text-align:center;font-size:42px;font-weight:800;color:#fff;text-shadow:0 1px 6px #00000080">${sr.length?avg.toFixed(2):'—'}</div>
-            </div>
+        return`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;opacity:${opacity}">
+          <div style="font-size:42px;font-weight:800;color:${col};min-height:52px;display:flex;align-items:center">${sr.length?avg.toFixed(2):'—'}</div>
+          <div style="width:100%;flex:1;background:#0f172a;border-radius:10px 10px 4px 4px;position:relative;overflow:hidden;min-height:10px">
+            <div class="bar-fill" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,${col}99,${col});border-radius:10px 10px 4px 4px;--w:${pct}%;height:${pct}%"></div>
           </div>
           <div style="font-size:32px">${s.icon}</div>
-          <div style="font-weight:800;font-size:30px;color:${s.color};text-align:center;line-height:1.2">${s.name}</div>
-          <div style="font-size:22px;color:#64748b;font-family:Barlow,sans-serif">${sr.length} eval${sr.length!==1?'s':''}</div>
+          <div style="font-weight:800;font-size:28px;color:${s.color};text-align:center;line-height:1.2">${s.name}</div>
+          <div style="font-size:20px;color:#64748b;font-family:Barlow,sans-serif">${sr.length} eval${sr.length!==1?'s':''}</div>
         </div>`;
       }).join('')}
     </div>`;
