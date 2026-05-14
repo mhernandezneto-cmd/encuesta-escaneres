@@ -1206,8 +1206,7 @@ function renderDashboard(rows){
       const sr=rows.filter(r=>r.Escaner===s.name);
       if(!sr.length) return `<div style="opacity:.3;margin-bottom:12px;font-size:14px;color:#334155;font-family:Barlow,sans-serif">${s.icon} ${s.name} — sin datos</div>`;
       const avgs=SECTIONS.map(sec=>{
-        const secQs=ALL_QS.filter(q=>q.section===sec.id);
-        const qids=secQs.map(q=>'P_'+q.id);
+        const qids=sec.questions.map(q=>'P_'+q.id);
         const vals=sr.flatMap(r=>qids.map(k=>parseFloat(r[k])).filter(x=>!isNaN(x)&&x>0));
         return vals.length?(vals.reduce((a,b)=>a+b,0)/vals.length):0;
       });
