@@ -17,7 +17,7 @@
   --text:#e2e8f0;--muted:#64748b;--subtle:#334155;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Barlow Condensed','Arial Narrow',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;font-size:32px}
+body{background:var(--bg);color:var(--text);font-family:'Barlow Condensed','Arial Narrow',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;font-size:44px}
 button{cursor:pointer;font-family:'Barlow Condensed','Arial Narrow',sans-serif}
 input,textarea{font-family:'Barlow',sans-serif;outline:none}
 textarea{resize:vertical}
@@ -36,17 +36,17 @@ textarea{resize:vertical}
 .hdr{background:linear-gradient(160deg,var(--card2) 0%,var(--surface) 100%);border-bottom:1px solid var(--border2);padding:16px 20px;position:relative;overflow:hidden}
 .hdr::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent)}
 .hdr-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px}
-.badge{background:linear-gradient(135deg,#ea6a0a,var(--orange));color:#fff;font-size:27px;font-weight:800;padding:5px 12px;letter-spacing:2.5px;text-transform:uppercase;border-radius:6px;box-shadow:0 2px 8px #f9731633}
-.sub-label{color:var(--muted);font-size:28px;letter-spacing:1.5px;text-transform:uppercase}
+.badge{background:linear-gradient(135deg,#ea6a0a,var(--orange));color:#fff;font-size:37px;font-weight:800;padding:5px 12px;letter-spacing:2.5px;text-transform:uppercase;border-radius:6px;box-shadow:0 2px 8px #f9731633}
+.sub-label{color:var(--muted);font-size:39px;letter-spacing:1.5px;text-transform:uppercase}
 .hdr h1{font-weight:800;font-size:clamp(44px,4vw,58px);color:#fff;letter-spacing:-.5px;margin-top:6px;text-shadow:0 0 30px #f9731620}
-.hdr-sub{font-size:24px;color:var(--muted);margin-top:3px;font-family:'Barlow',sans-serif}
+.hdr-sub{font-size:33px;color:var(--muted);margin-top:3px;font-family:'Barlow',sans-serif}
 .chips{display:flex;gap:5px;flex-wrap:wrap;align-items:center;margin-top:6px}
-.chip{background:var(--surface);border:1px solid var(--border2);border-radius:20px;padding:10px 20px;font-size:35px;color:#94a3b8;letter-spacing:.3px;font-weight:700}
+.chip{background:var(--surface);border:1px solid var(--border2);border-radius:20px;padding:10px 20px;font-size:49px;color:#94a3b8;letter-spacing:.3px;font-weight:700}
 .chip.green{border-color:#10b98144;color:var(--green);background:#10b98110}
 
 /* ── Progress ── */
 .prog-wrap{margin-top:12px}
-.prog-row{display:flex;justify-content:space-between;margin-bottom:5px;font-size:25px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
+.prog-row{display:flex;justify-content:space-between;margin-bottom:5px;font-size:35px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
 .prog-track{background:var(--bg);border-radius:99px;height:6px;overflow:hidden;box-shadow:inset 0 1px 3px #00000040}
 .prog-bar{height:100%;background:linear-gradient(90deg,#ea6a0a,var(--orange),#fbbf24);border-radius:99px;transition:width .5s cubic-bezier(.22,1,.36,1);box-shadow:0 0 8px #f9731660}
 
@@ -68,87 +68,87 @@ textarea{resize:vertical}
 .cedis-btn{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px 8px;color:var(--text);display:flex;flex-direction:column;align-items:center;gap:8px;transition:all .2s cubic-bezier(.22,1,.36,1);width:100%}
 .cedis-btn:hover{border-color:var(--orange);background:var(--card2);transform:translateY(-3px);box-shadow:0 8px 24px #f9731618}
 .cedis-btn .icon{font-size:80px;filter:drop-shadow(0 2px 4px #00000040)}
-.cedis-btn .name{font-weight:800;font-size:52px;letter-spacing:.3px}
+.cedis-btn .name{font-weight:800;font-size:62px;letter-spacing:.3px}
 
 /* ── Scanner buttons ── */
 .scanner-btn{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;color:var(--text);display:flex;align-items:center;gap:14px;transition:all .2s cubic-bezier(.22,1,.36,1);width:100%;text-align:left}
 .scanner-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px #00000030;border-color:var(--border2)}
-.scanner-btn .sicon{font-size:58px;border-radius:12px;width:62px;height:62px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.scanner-btn .sname{font-weight:800;font-size:44px;letter-spacing:-.2px}
-.scanner-btn .sdesc{font-size:33px;color:var(--muted);font-family:'Barlow',sans-serif;margin-top:3px;line-height:1.4}
+.scanner-btn .sicon{font-size:69px;border-radius:12px;width:62px;height:62px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.scanner-btn .sname{font-weight:800;font-size:60px;letter-spacing:-.2px}
+.scanner-btn .sdesc{font-size:46px;color:var(--muted);font-family:'Barlow',sans-serif;margin-top:3px;line-height:1.4}
 
 /* ── Form fields ── */
 .field{margin-bottom:20px}
 .field-hdr{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.field-label{font-weight:800;font-size:38px;color:#f1f5f9;letter-spacing:.2px}
-.field-hint{font-size:32px;color:var(--muted);font-family:'Barlow',sans-serif;margin-top:1px}
-.field-count{display:flex;justify-content:flex-end;margin-top:5px;font-size:27px;font-family:'Barlow',sans-serif}
-input.txt{width:100%;background:var(--card);border:1px solid var(--border2);border-radius:10px;color:var(--text);padding:15px 18px;font-size:38px;transition:all .2s;box-shadow:inset 0 1px 4px #00000020}
+.field-label{font-weight:800;font-size:53px;color:#f1f5f9;letter-spacing:.2px}
+.field-hint{font-size:44px;color:var(--muted);font-family:'Barlow',sans-serif;margin-top:1px}
+.field-count{display:flex;justify-content:flex-end;margin-top:5px;font-size:37px;font-family:'Barlow',sans-serif}
+input.txt{width:100%;background:var(--card);border:1px solid var(--border2);border-radius:10px;color:var(--text);padding:15px 18px;font-size:53px;transition:all .2s;box-shadow:inset 0 1px 4px #00000020}
 input.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-dim),inset 0 1px 4px #00000020}
 input.txt.filled{border-color:var(--orange)}
-.field-ok{margin-top:5px;font-size:27px;color:var(--green);font-family:'Barlow',sans-serif;display:flex;align-items:center;gap:4px}
+.field-ok{margin-top:5px;font-size:37px;color:var(--green);font-family:'Barlow',sans-serif;display:flex;align-items:center;gap:4px}
 
 /* ── Employee chip ── */
 .emp-chip{background:var(--card);border-radius:12px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;border:1px solid var(--border);border-left:3px solid var(--orange)}
-.emp-chip .emp-name{font-weight:800;font-size:44px;color:#f1f5f9}
-.emp-chip .emp-sub{font-size:38px;color:var(--muted);font-family:'Barlow',sans-serif;margin-top:2px}
-.edit-btn{background:transparent;border:1px solid var(--border2);border-radius:8px;color:var(--muted);padding:7px 13px;font-size:30px;font-weight:700;letter-spacing:1px;margin-left:auto;transition:all .2s}
+.emp-chip .emp-name{font-weight:800;font-size:60px;color:#f1f5f9}
+.emp-chip .emp-sub{font-size:53px;color:var(--muted);font-family:'Barlow',sans-serif;margin-top:2px}
+.edit-btn{background:transparent;border:1px solid var(--border2);border-radius:8px;color:var(--muted);padding:7px 13px;font-size:42px;font-weight:700;letter-spacing:1px;margin-left:auto;transition:all .2s}
 .edit-btn:hover{border-color:var(--orange);color:var(--orange)}
 
 /* ── Section header ── */
 .sec-hdr{background:var(--card);border-radius:12px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;border:1px solid var(--border)}
-.sec-title{font-size:44px;font-weight:800;letter-spacing:-.2px}
-.sec-sub{font-size:33px;color:var(--muted);font-family:'Barlow',sans-serif;margin-top:2px}
+.sec-title{font-size:60px;font-weight:800;letter-spacing:-.2px}
+.sec-sub{font-size:46px;color:var(--muted);font-family:'Barlow',sans-serif;margin-top:2px}
 
 /* ── Question card ── */
 .q-card{margin-bottom:8px;background:var(--surface);border-radius:14px;padding:14px 16px 12px;border:1px solid var(--border);border-left:3px solid var(--border);transition:all .2s}
 .q-card:hover{border-color:var(--border2)}
-.q-num{color:var(--subtle);font-size:35px;margin-right:5px;letter-spacing:1px}
-.q-text{font-weight:800;font-size:42px;color:#f1f5f9;margin-bottom:3px;letter-spacing:-.1px}
-.q-sub{font-size:38px;color:var(--muted);font-family:'Barlow',sans-serif;margin-bottom:10px;line-height:1.5}
+.q-num{color:var(--subtle);font-size:49px;margin-right:5px;letter-spacing:1px}
+.q-text{font-weight:800;font-size:58px;color:#f1f5f9;margin-bottom:3px;letter-spacing:-.1px}
+.q-sub{font-size:53px;color:var(--muted);font-family:'Barlow',sans-serif;margin-bottom:10px;line-height:1.5}
 .score-row{display:flex;gap:5px}
-.score-btn{flex:1;padding:18px 2px;border-radius:10px;background:var(--card);color:var(--subtle);font-weight:800;font-size:44px;border:1px solid var(--border);transition:all .15s}
+.score-btn{flex:1;padding:18px 2px;border-radius:10px;background:var(--card);color:var(--subtle);font-weight:800;font-size:60px;border:1px solid var(--border);transition:all .15s}
 .score-btn:hover{filter:brightness(1.2);transform:scale(1.06);box-shadow:0 4px 12px #00000030}
-.score-feedback{margin-top:7px;font-size:33px;font-weight:600;font-family:'Barlow',sans-serif;display:flex;align-items:center;gap:5px}
+.score-feedback{margin-top:7px;font-size:46px;font-weight:600;font-family:'Barlow',sans-serif;display:flex;align-items:center;gap:5px}
 
 /* ── Nav buttons ── */
 .nav-row{display:flex;gap:10px;margin-top:16px}
-.btn-back{flex:1;padding:15px;border-radius:12px;background:var(--card);color:#94a3b8;border:1px solid var(--border2);font-weight:700;font-size:35px;letter-spacing:1px;transition:all .2s}
+.btn-back{flex:1;padding:15px;border-radius:12px;background:var(--card);color:#94a3b8;border:1px solid var(--border2);font-weight:700;font-size:49px;letter-spacing:1px;transition:all .2s}
 .btn-back:hover{background:var(--card2);transform:translateY(-1px)}
-.btn-next{flex:2;padding:15px;border-radius:12px;color:#fff;border:none;font-weight:800;font-size:36px;letter-spacing:1px;transition:all .2s;box-shadow:0 4px 16px #00000030}
+.btn-next{flex:2;padding:15px;border-radius:12px;color:#fff;border:none;font-weight:800;font-size:50px;letter-spacing:1px;transition:all .2s;box-shadow:0 4px 16px #00000030}
 .btn-next:hover{opacity:.92;transform:translateY(-1px);box-shadow:0 6px 20px #00000040}
 .btn-next:disabled{background:var(--card)!important;color:var(--subtle);cursor:not-allowed;transform:none;box-shadow:none}
-.btn-full{width:100%;padding:17px;border-radius:12px;background:linear-gradient(135deg,#ea6a0a,var(--orange));color:#fff;border:none;font-weight:800;font-size:38px;letter-spacing:1px;transition:all .2s;box-shadow:0 4px 16px var(--orange-glow)}
+.btn-full{width:100%;padding:17px;border-radius:12px;background:linear-gradient(135deg,#ea6a0a,var(--orange));color:#fff;border:none;font-weight:800;font-size:53px;letter-spacing:1px;transition:all .2s;box-shadow:0 4px 16px var(--orange-glow)}
 .btn-full:hover{opacity:.92;transform:translateY(-1px);box-shadow:0 6px 24px var(--orange-glow)}
 
 /* ── Recommendation ── */
-.rec-btn{width:100%;margin-bottom:8px;padding:16px 18px;border-radius:12px;text-align:left;background:var(--card);border:1px solid var(--border2);color:#94a3b8;font-weight:600;font-size:38px;display:flex;align-items:center;gap:12px;transition:all .2s}
+.rec-btn{width:100%;margin-bottom:8px;padding:16px 18px;border-radius:12px;text-align:left;background:var(--card);border:1px solid var(--border2);color:#94a3b8;font-weight:600;font-size:53px;display:flex;align-items:center;gap:12px;transition:all .2s}
 .rec-btn:hover{border-color:rgba(255,255,255,.2);background:var(--card2);transform:translateY(-1px)}
 .rec-btn.selected{background:#0f2a20;border-color:var(--green);color:var(--green);font-weight:800;box-shadow:0 0 0 1px #10b98130}
-.rec-icon{font-size:41px}
-textarea.txt{width:100%;background:var(--card);border:1px solid var(--border2);border-radius:10px;color:var(--text);padding:14px 16px;font-size:35px;line-height:1.6;transition:all .2s}
+.rec-icon{font-size:57px}
+textarea.txt{width:100%;background:var(--card);border:1px solid var(--border2);border-radius:10px;color:var(--text);padding:14px 16px;font-size:49px;line-height:1.6;transition:all .2s}
 textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-dim)}
 
 /* ── Between screen ── */
 .progress-item{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--card);border-radius:12px;margin-bottom:7px;border:1px solid var(--border)}
 .progress-item.done{background:#0a1f15;border-color:#10b98130;border-left:3px solid var(--green)}
 .progress-item.pending{border-left:3px solid var(--border2)}
-.pi-avg{font-size:50px;font-weight:800}
+.pi-avg{font-size:60px;font-weight:800}
 
 /* ── Summary ── */
 .winner-card{border-radius:16px;padding:20px;margin-bottom:18px;text-align:center}
-.winner-score{font-size:64px;font-weight:800;line-height:1}
+.winner-score{font-size:76px;font-weight:800;line-height:1}
 .rank-card{background:var(--card);border-radius:14px;padding:16px 18px;margin-bottom:10px;border:1px solid var(--border)}
 .rank-card.first{border-left:4px solid var(--c);background:linear-gradient(135deg,color-mix(in srgb,var(--c) 5%,var(--card)),var(--card))}
 .rank-card.other{border-left:3px solid var(--border2)}
 .rank-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.rank-medal{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:35px;font-weight:800}
+.rank-medal{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:49px;font-weight:800}
 .sec-mini{flex:1;background:var(--surface);border-radius:8px;padding:7px;text-align:center;border:1px solid var(--border)}
 .comment-block{background:var(--card);border-radius:12px;padding:14px 16px;margin-bottom:10px}
-.note-box{background:var(--card);border-radius:12px;padding:16px 20px;margin-bottom:14px;border-left:3px solid var(--orange);font-size:33px;color:#94a3b8;font-family:'Barlow',sans-serif;line-height:1.7;border:1px solid var(--border)}
+.note-box{background:var(--card);border-radius:12px;padding:16px 20px;margin-bottom:14px;border-left:3px solid var(--orange);font-size:46px;color:#94a3b8;font-family:'Barlow',sans-serif;line-height:1.7;border:1px solid var(--border)}
 
 /* ── Label rows ── */
-.lbl{font-size:35px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:12px}
+.lbl{font-size:49px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:12px}
 </style>
 </head>
 <body>
@@ -165,11 +165,11 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
         <h1>EVALUACIÓN DE ESCÁNERES</h1>
         <div class="hdr-sub">Paso 1 · Selecciona tu CeDis</div>
       </div>
-      <button onclick="goTo('s-admin-login')" title="Administrador" style="background:transparent;border:1px solid #334155;border-radius:10px;padding:10px 14px;color:#475569;font-size:48px;cursor:pointer;transition:all .2s;flex-shrink:0" onmouseover="this.style.borderColor='#f97316';this.style.color='#f97316'" onmouseout="this.style.borderColor='#334155';this.style.color='#475569'">🛒</button>
+      <button onclick="goTo('s-admin-login')" title="Administrador" style="background:transparent;border:1px solid #334155;border-radius:10px;padding:10px 14px;color:#475569;font-size:60px;cursor:pointer;transition:all .2s;flex-shrink:0" onmouseover="this.style.borderColor='#f97316';this.style.color='#f97316'" onmouseout="this.style.borderColor='#334155';this.style.color='#475569'">🛒</button>
     </div>
   </div>
   <div class="content">
-    <div style="font-size:41px;font-weight:800;color:#f1f5f9;letter-spacing:.5px;margin-bottom:14px;text-transform:uppercase">¿En qué CeDis trabajas?</div>
+    <div style="font-size:57px;font-weight:800;color:#f1f5f9;letter-spacing:.5px;margin-bottom:14px;text-transform:uppercase">¿En qué CeDis trabajas?</div>
     <div class="grid3" id="cedis-grid"></div>
   </div>
 </div>
@@ -191,16 +191,16 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
   </div>
   <div class="content">
     <div class="card orange" style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
-      <span style="font-size:44px">👷</span>
+      <span style="font-size:60px">👷</span>
       <div>
-        <div style="font-size:30px;font-weight:800;color:#f97316">Datos del operador</div>
-        <div style="font-size:25px;color:#94a3b8;font-family:'Barlow',sans-serif;margin-top:2px">Estos datos identifican tu evaluación. Los tres campos son obligatorios.</div>
+        <div style="font-size:42px;font-weight:800;color:#f97316">Datos del operador</div>
+        <div style="font-size:35px;color:#94a3b8;font-family:'Barlow',sans-serif;margin-top:2px">Estos datos identifican tu evaluación. Los tres campos son obligatorios.</div>
       </div>
     </div>
 
     <div class="field">
       <div class="field-hdr">
-        <span style="font-size:38px">🪪</span>
+        <span style="font-size:53px">🪪</span>
         <div>
           <div class="field-label">Número de empleado</div>
           <div class="field-hint">Solo números · máximo 8 dígitos</div>
@@ -213,7 +213,7 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
 
     <div class="field">
       <div class="field-hdr">
-        <span style="font-size:35px">👤</span>
+        <span style="font-size:49px">👤</span>
         <div>
           <div class="field-label">Nombre completo</div>
           <div class="field-hint">Escribe tu nombre tal como aparece en tu credencial</div>
@@ -225,7 +225,7 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
 
     <div class="field">
       <div class="field-hdr">
-        <span style="font-size:35px">📋</span>
+        <span style="font-size:49px">📋</span>
         <div>
           <div class="field-label">Puesto</div>
           <div class="field-hint">Tu cargo o función actual en el CeDis</div>
@@ -258,7 +258,7 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
   </div>
   <div class="content">
     <div id="emp-summary" class="emp-chip">
-      <span style="font-size:41px">👷</span>
+      <span style="font-size:57px">👷</span>
       <div style="flex:1">
         <div class="emp-name" id="sum-nombre"></div>
         <div class="emp-sub" id="sum-sub"></div>
@@ -266,8 +266,8 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
       <button class="edit-btn" onclick="goTo('s-empleado')">EDITAR</button>
     </div>
     <div class="card orange" style="margin-bottom:20px">
-      <div style="font-size:42px;font-weight:800;color:#f97316;margin-bottom:8px">Evaluarás los 3 escáneres</div>
-      <div style="font-size:38px;color:#94a3b8;font-family:'Barlow',sans-serif;line-height:1.6">Al terminar cada uno te pasaremos automáticamente al siguiente. Empieza con el que usaste primero.</div>
+      <div style="font-size:58px;font-weight:800;color:#f97316;margin-bottom:8px">Evaluarás los 3 escáneres</div>
+      <div style="font-size:53px;color:#94a3b8;font-family:'Barlow',sans-serif;line-height:1.6">Al terminar cada uno te pasaremos automáticamente al siguiente. Empieza con el que usaste primero.</div>
     </div>
     <div class="lbl">¿Con cuál empiezas?</div>
     <div class="grid1" id="scanner-list"></div>
@@ -297,7 +297,7 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
   </div>
   <div class="content">
     <div class="sec-hdr" id="sec-hdr-div">
-      <span id="sec-icon" style="font-size:41px"></span>
+      <span id="sec-icon" style="font-size:57px"></span>
       <div><div class="sec-title" id="sec-title"></div><div class="sec-sub" id="sec-sub-txt"></div></div>
     </div>
     <div id="questions-container"></div>
@@ -324,22 +324,22 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
   </div>
   <div class="content">
     <div style="margin-bottom:16px">
-      <div style="font-size:27px;font-weight:800;color:#f1f5f9;margin-bottom:4px">¿Cuál es tu recomendación final?</div>
-      <div style="font-size:25px;color:#64748b;font-family:'Barlow',sans-serif;margin-bottom:12px" id="rec-desc"></div>
+      <div style="font-size:37px;font-weight:800;color:#f1f5f9;margin-bottom:4px">¿Cuál es tu recomendación final?</div>
+      <div style="font-size:35px;color:#64748b;font-family:'Barlow',sans-serif;margin-bottom:12px" id="rec-desc"></div>
       <button class="rec-btn" id="rec-yes" onclick="setRec('yes',this)"><span class="rec-icon">✅</span>Lo recomendaría para operación diaria</button>
       <button class="rec-btn" id="rec-some" onclick="setRec('some',this)"><span class="rec-icon">⚠️</span>Lo usaría solo en ciertos procesos</button>
       <button class="rec-btn" id="rec-no" onclick="setRec('no',this)"><span class="rec-icon">❌</span>No lo recomendaría</button>
     </div>
     <div class="field" style="margin-bottom:12px">
-      <div style="font-size:25px;font-weight:700;color:#f1f5f9;margin-bottom:5px">¿Qué fue lo MEJOR?</div>
+      <div style="font-size:35px;font-weight:700;color:#f1f5f9;margin-bottom:5px">¿Qué fue lo MEJOR?</div>
       <textarea id="txt-best" class="txt" rows="2" placeholder="Lo que más te ayudó..."></textarea>
     </div>
     <div class="field" style="margin-bottom:12px">
-      <div style="font-size:25px;font-weight:700;color:#f1f5f9;margin-bottom:5px">¿Qué fue lo PEOR?</div>
+      <div style="font-size:35px;font-weight:700;color:#f1f5f9;margin-bottom:5px">¿Qué fue lo PEOR?</div>
       <textarea id="txt-worst" class="txt" rows="2" placeholder="Lo que más te molestó..."></textarea>
     </div>
     <div class="field" style="margin-bottom:16px">
-      <div style="font-size:25px;font-weight:700;color:#f1f5f9;margin-bottom:5px">¿Alguna observación?</div>
+      <div style="font-size:35px;font-weight:700;color:#f1f5f9;margin-bottom:5px">¿Alguna observación?</div>
       <textarea id="txt-extra" class="txt" rows="2" placeholder="Cualquier otra cosa..."></textarea>
     </div>
     <div id="next-preview" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:10px;padding:12px 14px;margin-bottom:12px">
@@ -369,9 +369,9 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
   </div>
   <div class="content">
     <div style="text-align:center;margin-bottom:24px" class="pop" id="between-done-card">
-      <div style="font-size:67px;margin-bottom:8px">✅</div>
-      <div style="font-size:41px;font-weight:800" id="between-name"></div>
-      <div style="font-size:28px;color:#64748b;font-family:'Barlow',sans-serif;margin-top:4px">Guardado · Promedio <span id="between-avg" style="font-weight:800"></span> / 5.00</div>
+      <div style="font-size:80px;margin-bottom:8px">✅</div>
+      <div style="font-size:57px;font-weight:800" id="between-name"></div>
+      <div style="font-size:39px;color:#64748b;font-family:'Barlow',sans-serif;margin-top:4px">Guardado · Promedio <span id="between-avg" style="font-weight:800"></span> / 5.00</div>
     </div>
     <div class="lbl">Progreso general</div>
     <div id="between-progress" style="margin-bottom:20px"></div>
@@ -418,15 +418,15 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
   </div>
   <div class="content">
     <div class="card orange" style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
-      <span style="font-size:44px">🔒</span>
+      <span style="font-size:60px">🔒</span>
       <div>
-        <div style="font-size:30px;font-weight:800;color:#f97316">Área de administrador</div>
-        <div style="font-size:25px;color:#94a3b8;font-family:'Barlow',sans-serif;margin-top:2px">Ingresa la contraseña para ver los resultados.</div>
+        <div style="font-size:42px;font-weight:800;color:#f97316">Área de administrador</div>
+        <div style="font-size:35px;color:#94a3b8;font-family:'Barlow',sans-serif;margin-top:2px">Ingresa la contraseña para ver los resultados.</div>
       </div>
     </div>
     <div class="field">
       <input id="inp-admin-pass" class="txt" type="password" placeholder="Contraseña" onkeydown="if(event.key==='Enter')checkAdminPass()"/>
-      <div id="admin-pass-err" style="color:#ef4444;font-size:25px;margin-top:6px;font-family:'Barlow',sans-serif;display:none">Contraseña incorrecta.</div>
+      <div id="admin-pass-err" style="color:#ef4444;font-size:35px;margin-top:6px;font-family:'Barlow',sans-serif;display:none">Contraseña incorrecta.</div>
     </div>
     <div class="nav-row">
       <button class="btn-back" onclick="goTo('s-cedis')">← SALIR</button>
@@ -447,10 +447,10 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
         <div class="hdr-sub" id="dash-updated">Cargando datos...</div>
       </div>
       <div style="display:flex;gap:8px;align-items:center;margin-top:6px">
-        <button onclick="loadDashboard()" style="background:transparent;border:1px solid #334155;border-radius:10px;padding:13px 22px;color:#94a3b8;font-size:33px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s" onmouseover="this.style.borderColor='#f97316';this.style.color='#f97316'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">↻ ACTUALIZAR</button>
-        <button onclick="downloadExcel()" style="background:transparent;border:1px solid #334155;border-radius:10px;padding:13px 22px;color:#94a3b8;font-size:33px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s" onmouseover="this.style.borderColor='#10b981';this.style.color='#10b981'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">↓ EXCEL</button>
-        <button onclick="goTo('s-cedis')" style="background:transparent;border:1px solid #334155;border-radius:10px;padding:13px 22px;color:#94a3b8;font-size:33px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s" onmouseover="this.style.borderColor='#ef4444';this.style.color='#ef4444'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">← SALIR</button>
-        <button onclick="confirmarBorrado()" style="background:transparent;border:1px solid #334155;border-radius:10px;padding:13px 22px;color:#94a3b8;font-size:33px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s" onmouseover="this.style.borderColor='#ef4444';this.style.color='#ef4444';this.style.background='#ef444410'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8';this.style.background='transparent'">🗑 BORRAR TODO</button>
+        <button onclick="loadDashboard()" style="background:transparent;border:1px solid #334155;border-radius:10px;padding:13px 22px;color:#94a3b8;font-size:46px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s" onmouseover="this.style.borderColor='#f97316';this.style.color='#f97316'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">↻ ACTUALIZAR</button>
+        <button onclick="downloadExcel()" style="background:transparent;border:1px solid #334155;border-radius:10px;padding:13px 22px;color:#94a3b8;font-size:46px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s" onmouseover="this.style.borderColor='#10b981';this.style.color='#10b981'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">↓ EXCEL</button>
+        <button onclick="goTo('s-cedis')" style="background:transparent;border:1px solid #334155;border-radius:10px;padding:13px 22px;color:#94a3b8;font-size:46px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s" onmouseover="this.style.borderColor='#ef4444';this.style.color='#ef4444'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">← SALIR</button>
+        <button onclick="confirmarBorrado()" style="background:transparent;border:1px solid #334155;border-radius:10px;padding:13px 22px;color:#94a3b8;font-size:46px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s" onmouseover="this.style.borderColor='#ef4444';this.style.color='#ef4444';this.style.background='#ef444410'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8';this.style.background='transparent'">🗑 BORRAR TODO</button>
       </div>
     </div>
   </div>
@@ -462,14 +462,14 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
     </div>
 
     <div style="background:#1e293b;border-radius:14px;padding:18px;border:1px solid #1e3050;margin-bottom:20px">
-      <div style="font-size:36px;font-weight:800;color:#f1f5f9;letter-spacing:.5px;text-transform:uppercase;margin-bottom:18px">Participación por CeDis</div>
+      <div style="font-size:50px;font-weight:800;color:#f1f5f9;letter-spacing:.5px;text-transform:uppercase;margin-bottom:18px">Participación por CeDis</div>
       <div id="dash-cedis-chart"></div>
     </div>
     <div style="background:#1e293b;border-radius:14px;padding:20px;border:1px solid #1e3050;margin-bottom:20px">
-      <div style="font-size:44px;font-weight:800;color:#f1f5f9;letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px">Recomendaciones por escáner</div>
+      <div style="font-size:60px;font-weight:800;color:#f1f5f9;letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px">Recomendaciones por escáner</div>
     <div id="dash-rec" style="margin-bottom:20px"></div>
     </div>
-    <div style="font-size:44px;font-weight:800;color:#f1f5f9;letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px">Promedio por sección y escáner</div>
+    <div style="font-size:60px;font-weight:800;color:#f1f5f9;letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px">Promedio por sección y escáner</div>
     <div id="dash-sections" style="margin-bottom:20px"></div>
 
   </div>
@@ -738,9 +738,9 @@ function renderFinal(){
     preview.style.display='block';
     plist.innerHTML=rem.map((r,i)=>`
       <div style="flex:1;background:#1e293b;border:1px solid ${r.color}33;border-radius:8px;padding:10px;text-align:center">
-        <div style="font-size:38px;margin-bottom:4px">${r.icon}</div>
-        <div style="font-size:25px;font-weight:800;color:${r.color}">${r.name}</div>
-        <div style="font-size:22px;color:#475569;margin-top:2px">Escáner ${completedIds().length+i+2} de 3</div>
+        <div style="font-size:53px;margin-bottom:4px">${r.icon}</div>
+        <div style="font-size:35px;font-weight:800;color:${r.color}">${r.name}</div>
+        <div style="font-size:30px;color:#475569;margin-top:2px">Escáner ${completedIds().length+i+2} de 3</div>
       </div>`).join('');
   } else preview.style.display='none';
 
@@ -821,10 +821,10 @@ function renderBetween(){
     const a=done?calcAvg(state.allEvals[s.id].answers).toFixed(1):null;
     return `<div class="progress-item ${done?'done':'pending'}">
       <div style="display:flex;align-items:center;gap:10px">
-        <span style="font-size:38px">${s.icon}</span>
+        <span style="font-size:53px">${s.icon}</span>
         <div>
-          <div style="font-weight:800;font-size:28px;color:${done?'#10b981':s.color}">${s.name}</div>
-          <div style="font-size:24px;color:${done?'#10b981':'#475569'};font-family:'Barlow',sans-serif">${done?'✓ Completado':'Pendiente'}</div>
+          <div style="font-weight:800;font-size:39px;color:${done?'#10b981':s.color}">${s.name}</div>
+          <div style="font-size:33px;color:${done?'#10b981':'#475569'};font-family:'Barlow',sans-serif">${done?'✓ Completado':'Pendiente'}</div>
         </div>
       </div>
       <div class="pi-avg" style="color:${done?'#10b981':'#334155'}">${done?a:'—'}</div>
@@ -836,7 +836,7 @@ function renderBetween(){
     <button class="scanner-btn" style="border:2px solid ${s.color}" onclick="startScanner('${s.id}')">
       <span class="sicon" style="background:${s.color}22">${s.icon}</span>
       <div style="flex:1"><div class="sname" style="color:${s.color}">${s.name}</div><div class="sdesc">${s.desc}</div></div>
-      <span style="font-size:41px;color:${s.color}">→</span>
+      <span style="font-size:57px;color:${s.color}">→</span>
     </button>`).join('');
 
   goTo('s-between');
@@ -856,12 +856,12 @@ function renderAllDone(){
   wc.style.background=`linear-gradient(135deg,${winner.color}22,#1e293b)`;
   wc.style.border=`2px solid ${winner.color}`;
   wc.innerHTML=`
-    <div style="font-size:24px;color:${winner.color};letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:6px">🏆 Mejor evaluado</div>
-    <div style="font-size:42px;font-weight:800;color:${winner.color};margin-bottom:4px">${winner.icon} ${winner.name}</div>
+    <div style="font-size:33px;color:${winner.color};letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:6px">🏆 Mejor evaluado</div>
+    <div style="font-size:58px;font-weight:800;color:${winner.color};margin-bottom:4px">${winner.icon} ${winner.name}</div>
     <div class="winner-score" style="color:${winner.color}">${winner.avg.toFixed(2)}</div>
-    <div style="font-size:25px;color:#64748b">/5.00</div>
-    <div style="font-size:32px;margin-top:2px">${star}</div>
-    ${state.nombreCompleto?`<div style="font-size:25px;color:#94a3b8;font-family:'Barlow',sans-serif;margin-top:6px">${state.nombreCompleto} · ${state.puesto} · Emp. #${state.numEmpleado} · ${cd?cd.icon+' '+cd.name:''}</div>`:''}
+    <div style="font-size:35px;color:#64748b">/5.00</div>
+    <div style="font-size:44px;margin-top:2px">${star}</div>
+    ${state.nombreCompleto?`<div style="font-size:35px;color:#94a3b8;font-family:'Barlow',sans-serif;margin-top:6px">${state.nombreCompleto} · ${state.puesto} · Emp. #${state.numEmpleado} · ${cd?cd.icon+' '+cd.name:''}</div>`:''}
   `;
 
   const rl=document.getElementById('ranking-list');
@@ -871,25 +871,25 @@ function renderAllDone(){
     const ri=recMap[ev.rec]||{icon:'—',text:'—',color:'#64748b'};
     const commentsHTML=(ev.best||ev.worst)?`
       <div style="border-top:1px solid #334155;padding-top:8px;display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-        ${ev.best?`<div style="flex:1;min-width:40%"><div style="font-size:20px;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px">✅ Mejor</div><div style="font-size:24px;color:#94a3b8;font-family:'Barlow',sans-serif;line-height:1.4">${ev.best}</div></div>`:''}
-        ${ev.worst?`<div style="flex:1;min-width:40%"><div style="font-size:20px;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px">❌ Peor</div><div style="font-size:24px;color:#94a3b8;font-family:'Barlow',sans-serif;line-height:1.4">${ev.worst}</div></div>`:''}
+        ${ev.best?`<div style="flex:1;min-width:40%"><div style="font-size:28px;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px">✅ Mejor</div><div style="font-size:33px;color:#94a3b8;font-family:'Barlow',sans-serif;line-height:1.4">${ev.best}</div></div>`:''}
+        ${ev.worst?`<div style="flex:1;min-width:40%"><div style="font-size:28px;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px">❌ Peor</div><div style="font-size:33px;color:#94a3b8;font-family:'Barlow',sans-serif;line-height:1.4">${ev.worst}</div></div>`:''}
       </div>`:'';
     const secMiniHTML=SECTIONS.map(sec=>{
       const sa=calcSecAvg(sec.id,ev.answers).toFixed(1);
-      return `<div class="sec-mini"><div style="font-size:27px">${sec.icon}</div><div style="font-size:28px;font-weight:800;color:${s.color}">${sa}</div><div style="font-size:20px;color:#475569;line-height:1.2">${sec.title.split(' ')[0]}</div></div>`;
+      return `<div class="sec-mini"><div style="font-size:37px">${sec.icon}</div><div style="font-size:39px;font-weight:800;color:${s.color}">${sa}</div><div style="font-size:28px;color:#475569;line-height:1.2">${sec.title.split(' ')[0]}</div></div>`;
     }).join('');
     return `<div class="rank-card ${i===0?'first':'other'}" style="--c:${s.color}">
       <div class="rank-row">
         <div style="display:flex;align-items:center;gap:10px">
           <div class="rank-medal" style="background:${i===0?s.color:'#0f172a'};color:${i===0?'#fff':'#64748b'}">${i===0?'🏆':i+1}</div>
           <div>
-            <div style="font-weight:800;font-size:32px;color:${i===0?s.color:'#e2e8f0'}">${s.icon} ${s.name}</div>
-            <div style="font-size:24px;color:${ri.color}">${ri.icon} ${ri.text}</div>
+            <div style="font-weight:800;font-size:44px;color:${i===0?s.color:'#e2e8f0'}">${s.icon} ${s.name}</div>
+            <div style="font-size:33px;color:${ri.color}">${ri.icon} ${ri.text}</div>
           </div>
         </div>
         <div style="text-align:right">
-          <div style="font-size:42px;font-weight:800;color:${s.color};line-height:1">${s.avg.toFixed(2)}</div>
-          <div style="font-size:22px;color:#475569">/5.00</div>
+          <div style="font-size:58px;font-weight:800;color:${s.color};line-height:1">${s.avg.toFixed(2)}</div>
+          <div style="font-size:30px;color:#475569">/5.00</div>
         </div>
       </div>
       <div style="background:#0f172a;border-radius:4px;height:7px;overflow:hidden;margin-bottom:8px">
@@ -960,21 +960,21 @@ function renderDashboard(rows){
   }).filter(s=>s.count>0).sort((a,b)=>b.avg-a.avg);
   document.getElementById('dash-winner').innerHTML=scannerAvgs.length?`
     <div style="background:linear-gradient(135deg,${scannerAvgs[0].color}22,#1e293b);border:2px solid ${scannerAvgs[0].color};border-radius:12px;padding:16px;text-align:center;height:100%;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center">
-      <div style="font-size:22px;color:${scannerAvgs[0].color};letter-spacing:3px;font-weight:700;margin-bottom:8px;font-size:32px">MEJOR EVALUADO</div>
-      <div style="font-size:58px;font-weight:800;color:${scannerAvgs[0].color}">${scannerAvgs[0].icon} ${scannerAvgs[0].name}</div>
+      <div style="font-size:30px;color:${scannerAvgs[0].color};letter-spacing:3px;font-weight:700;margin-bottom:8px;font-size:44px">MEJOR EVALUADO</div>
+      <div style="font-size:69px;font-weight:800;color:${scannerAvgs[0].color}">${scannerAvgs[0].icon} ${scannerAvgs[0].name}</div>
       <div style="font-size:86px;font-weight:800;color:${scannerAvgs[0].color};line-height:1.1">${scannerAvgs[0].avg.toFixed(2)}</div>
-      <div style="font-size:38px;color:#64748b">/5.00 · ${scannerAvgs[0].count} evaluaciones</div>
+      <div style="font-size:53px;color:#64748b">/5.00 · ${scannerAvgs[0].count} evaluaciones</div>
     </div>`:'';
 
   // Recomendaciones
   const recLabels={Recomendado:{icon:'✅',color:'#10b981'},'Solo ciertos procesos':{icon:'⚠️',color:'#f97316'},'No recomendado':{icon:'❌',color:'#ef4444'}};
   document.getElementById('dash-rec').innerHTML=`
-    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+    <div style="display:flex;gap:10px;flex-wrap:nowrap;justify-content:space-around">
       ${SCANNERS.map(s=>{
         const sr=rows.filter(r=>r.Escaner===s.name);
         if(!sr.length) return`<div style="flex:1;min-width:200px;background:#1e293b;border-radius:14px;padding:20px;text-align:center;opacity:.3">
-          <div style="font-size:38px;font-weight:800;color:#64748b">${s.icon} ${s.name}</div>
-          <div style="font-size:27px;color:#475569;margin-top:6px;font-family:Barlow,sans-serif">Sin evaluaciones</div>
+          <div style="font-size:53px;font-weight:800;color:#64748b">${s.icon} ${s.name}</div>
+          <div style="font-size:37px;color:#475569;margin-top:6px;font-family:Barlow,sans-serif">Sin evaluaciones</div>
         </div>`;
         const counts={Recomendado:0,'Solo ciertos procesos':0,'No recomendado':0};
         sr.forEach(r=>{if(counts[r.Recomendacion]!==undefined)counts[r.Recomendacion]++;});
@@ -998,20 +998,20 @@ function renderDashboard(rows){
         const top=[...segments].sort((a,b)=>b.v-a.v)[0];
         const topPct=total?Math.round(top.v/total*100):0;
         return`<div style="flex:1;min-width:0;background:#1e293b;border-radius:14px;padding:20px 16px;text-align:center;border-top:3px solid ${s.color}">
-          <div style="font-size:44px;font-weight:800;color:${s.color};margin-bottom:18px">${s.icon} ${s.name}</div>
+          <div style="font-size:60px;font-weight:800;color:${s.color};margin-bottom:18px">${s.icon} ${s.name}</div>
           <div style="position:relative;display:inline-block">
-            <svg width="240" height="240" viewBox="0 0 200 200">
+            <svg width="300" height="300" viewBox="0 0 200 200">
               <circle cx="${cx}" cy="${cy}" r="${rv}" fill="none" stroke="#0f172a" stroke-width="${sw}"/>
               ${slices}
             </svg>
             <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
-              <div style="font-size:44px;font-weight:800;color:${top.color}">${topPct}%</div>
-              <div style="font-size:16px;color:#64748b;font-family:Barlow,sans-serif;line-height:1.3;max-width:80px">${top.label}</div>
+              <div style="font-size:52px;font-weight:800;color:${top.color}">${topPct}%</div>
+              <div style="font-size:18px;color:#64748b;font-family:Barlow,sans-serif;line-height:1.3;max-width:90px">${top.label}</div>
             </div>
           </div>
           <div style="margin-top:14px;display:flex;flex-direction:column;gap:7px">
             ${segments.map(x=>`
-              <div style="display:flex;align-items:center;justify-content:space-between;font-size:35px">
+              <div style="display:flex;align-items:center;justify-content:space-between;font-size:49px">
                 <div style="display:flex;align-items:center;gap:7px">
                   <div style="width:11px;height:11px;border-radius:50%;background:${x.color};flex-shrink:0"></div>
                   <span style="color:#94a3b8;font-family:Barlow,sans-serif">${x.label}</span>
@@ -1028,7 +1028,7 @@ function renderDashboard(rows){
     const sr=rows.filter(r=>r.Escaner===s.name);
     if(!sr.length)return'';
     return`<div style="background:#1e293b;border-radius:10px;padding:12px 14px;margin-bottom:10px">
-      <div style="font-weight:800;font-size:41px;color:${s.color};margin-bottom:14px">${s.icon} ${s.name}</div>
+      <div style="font-weight:800;font-size:57px;color:${s.color};margin-bottom:14px">${s.icon} ${s.name}</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
         ${SECTIONS.map(sec=>{
           const qids=sec.questions.map(q=>'P_'+q.id);
@@ -1036,9 +1036,9 @@ function renderDashboard(rows){
           const avg=vals.length?(vals.reduce((a,b)=>a+b,0)/vals.length):0;
           const col=barColor(avg);
           return`<div style="background:#0f172a;border-radius:12px;padding:24px 10px;text-align:center">
-            <div style="font-size:62px;margin-bottom:12px">${sec.icon}</div>
-            <div style="font-size:64px;font-weight:800;color:${col};line-height:1">${avg>0?avg.toFixed(1):'—'}</div>
-            <div style="font-size:40px;color:#94a3b8;line-height:1.4;margin-top:10px">${sec.title}</div>
+            <div style="font-size:74px;margin-bottom:12px">${sec.icon}</div>
+            <div style="font-size:76px;font-weight:800;color:${col};line-height:1">${avg>0?avg.toFixed(1):'—'}</div>
+            <div style="font-size:56px;color:#94a3b8;line-height:1.4;margin-top:10px">${sec.title}</div>
           </div>`;
         }).join('')}
       </div>
@@ -1062,9 +1062,9 @@ function renderDashboard(rows){
     <div style="height:100%;display:flex;flex-direction:column;gap:6px">
       <div style="background:linear-gradient(135deg,#f9731622,#1e293b);border:2px solid #f97316;border-radius:12px;padding:16px;display:flex;align-items:center;justify-content:space-between;flex:1">
         <div>
-          <div style="font-size:41px;color:#f97316;letter-spacing:2px;font-weight:700;margin-bottom:12px">TOTAL PERSONAS</div>
+          <div style="font-size:57px;color:#f97316;letter-spacing:2px;font-weight:700;margin-bottom:12px">TOTAL PERSONAS</div>
           <div style="font-size:110px;font-weight:800;color:#f97316;line-height:1">${personasTotal}</div>
-          <div style="font-size:41px;color:#64748b;margin-top:10px;font-family:Barlow,sans-serif">encuestados en total</div>
+          <div style="font-size:57px;color:#64748b;margin-top:10px;font-family:Barlow,sans-serif">encuestados en total</div>
         </div>
         <div style="font-size:80px;opacity:.15">👷</div>
       </div>
@@ -1076,12 +1076,12 @@ function renderDashboard(rows){
         const pct=Math.round((c.count/maxBar)*100);
         const col=c.count>0?'#3b82f6':'#1e3050';
         return`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;height:100%">
-          <div style="font-size:41px;font-weight:800;color:${col};min-height:28px">${c.count>0?c.count:''}</div>
+          <div style="font-size:57px;font-weight:800;color:${col};min-height:28px">${c.count>0?c.count:''}</div>
           <div style="width:100%;flex:1;background:#0f172a;border-radius:6px 6px 3px 3px;position:relative;overflow:hidden">
             <div class="bar-fill" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,#1d4ed8,${col});border-radius:6px 6px 3px 3px;--w:${pct}%;height:${pct}%"></div>
           </div>
-          <div style="font-size:50px">${c.icon}</div>
-          <div style="font-size:33px;color:${c.count>0?'#94a3b8':'#334155'};font-family:Barlow,sans-serif;text-align:center;line-height:1.2;max-width:70px">${c.name}</div>
+          <div style="font-size:60px">${c.icon}</div>
+          <div style="font-size:46px;color:${c.count>0?'#94a3b8':'#334155'};font-family:Barlow,sans-serif;text-align:center;line-height:1.2;max-width:70px">${c.name}</div>
         </div>`;
       }).join('')}
     </div>`;
@@ -1092,17 +1092,17 @@ function renderDashboard(rows){
 async function loadDashboard(){
   goTo('s-admin');
   document.getElementById('dash-updated').textContent='Cargando datos...';
-  document.getElementById('dash-kpis').innerHTML='<div style="grid-column:1/-1;color:#64748b;font-size:27px;font-family:Barlow,sans-serif;padding:8px 0">Conectando con Google Sheets...</div>';
+  document.getElementById('dash-kpis').innerHTML='<div style="grid-column:1/-1;color:#64748b;font-size:37px;font-family:Barlow,sans-serif;padding:8px 0">Conectando con Google Sheets...</div>';
   let rows=[];
   try{
     const res=await fetch(SHEETS_URL);
     rows=await res.json();
   }catch(e){
-    document.getElementById('dash-kpis').innerHTML='<div style="grid-column:1/-1;color:#ef4444;font-size:27px;font-family:Barlow,sans-serif;padding:8px 0">Error al conectar con Google Sheets.</div>';
+    document.getElementById('dash-kpis').innerHTML='<div style="grid-column:1/-1;color:#ef4444;font-size:37px;font-family:Barlow,sans-serif;padding:8px 0">Error al conectar con Google Sheets.</div>';
     return;
   }
   if(!rows||rows.length===0){
-    document.getElementById('dash-kpis').innerHTML='<div style="grid-column:1/-1;color:#64748b;font-size:27px;font-family:Barlow,sans-serif;padding:8px 0">Sin respuestas registradas todavia.</div>';
+    document.getElementById('dash-kpis').innerHTML='<div style="grid-column:1/-1;color:#64748b;font-size:37px;font-family:Barlow,sans-serif;padding:8px 0">Sin respuestas registradas todavia.</div>';
     document.getElementById('dash-updated').textContent='Sin datos';
     ['dash-winner','dash-total-encuestas','dash-rec','dash-sections','dash-cedis-chart'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='';});
     return;
@@ -1179,12 +1179,12 @@ async function ejecutarBorrado(){
 <!-- ══ MODAL CONFIRMAR BORRADO ══ -->
 <div id="modal-borrar" style="display:none;position:fixed;inset:0;background:#00000090;z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px)">
   <div style="background:#0f1929;border:1px solid #ef444444;border-radius:16px;padding:28px 24px;max-width:340px;width:90%;text-align:center;box-shadow:0 20px 60px #00000080;animation:pop .3s ease">
-    <div style="font-size:64px;margin-bottom:12px">⚠️</div>
-    <div style="font-size:38px;font-weight:800;color:#f1f5f9;margin-bottom:8px;letter-spacing:-.3px">¿Borrar todos los datos?</div>
-    <div style="font-size:27px;color:#64748b;font-family:'Barlow',sans-serif;line-height:1.6;margin-bottom:24px">Esta acción eliminará <strong style="color:#ef4444">todas las respuestas</strong> guardadas en Google Sheets. No se puede deshacer.</div>
+    <div style="font-size:76px;margin-bottom:12px">⚠️</div>
+    <div style="font-size:53px;font-weight:800;color:#f1f5f9;margin-bottom:8px;letter-spacing:-.3px">¿Borrar todos los datos?</div>
+    <div style="font-size:37px;color:#64748b;font-family:'Barlow',sans-serif;line-height:1.6;margin-bottom:24px">Esta acción eliminará <strong style="color:#ef4444">todas las respuestas</strong> guardadas en Google Sheets. No se puede deshacer.</div>
     <div style="display:flex;gap:10px">
-      <button onclick="cancelarBorrado()" style="flex:1;padding:12px;border-radius:10px;background:#1a2840;border:1px solid #243658;color:#94a3b8;font-size:28px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s" onmouseover="this.style.background='#243658'" onmouseout="this.style.background='#1a2840'">CANCELAR</button>
-      <button onclick="ejecutarBorrado()" style="flex:1;padding:12px;border-radius:10px;background:#ef444420;border:1px solid #ef4444;color:#ef4444;font-size:28px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s" onmouseover="this.style.background='#ef444430'" onmouseout="this.style.background='#ef444420'">🗑 BORRAR TODO</button>
+      <button onclick="cancelarBorrado()" style="flex:1;padding:12px;border-radius:10px;background:#1a2840;border:1px solid #243658;color:#94a3b8;font-size:39px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s" onmouseover="this.style.background='#243658'" onmouseout="this.style.background='#1a2840'">CANCELAR</button>
+      <button onclick="ejecutarBorrado()" style="flex:1;padding:12px;border-radius:10px;background:#ef444420;border:1px solid #ef4444;color:#ef4444;font-size:39px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;transition:all .2s" onmouseover="this.style.background='#ef444430'" onmouseout="this.style.background='#ef444420'">🗑 BORRAR TODO</button>
     </div>
   </div>
 </div>
