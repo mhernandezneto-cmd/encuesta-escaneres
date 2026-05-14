@@ -438,58 +438,70 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
 <!-- ══ SCREEN: ADMIN DASHBOARD ══ -->
 <div id="s-admin" class="screen">
   <!-- HEADER -->
-  <div style="background:#0d1b2e;border-bottom:2px solid #f97316;padding:12px 24px;display:flex;justify-content:space-between;align-items:center">
+  <div style="background:#0d1b2e;border-bottom:2px solid #f97316;padding:14px 24px;display:flex;justify-content:space-between;align-items:center">
     <div>
       <div style="display:flex;gap:10px;align-items:center;margin-bottom:4px">
-        <span style="background:#f97316;color:#fff;font-size:12px;font-weight:800;padding:3px 10px;letter-spacing:2px;border-radius:4px">ADMINISTRADOR</span>
+        <span style="background:#f97316;color:#fff;font-size:13px;font-weight:800;padding:4px 12px;letter-spacing:2px;border-radius:4px">ADMINISTRADOR</span>
         <span style="color:#475569;font-size:13px;letter-spacing:1px">NETO · CEDIS PICKEO</span>
       </div>
-      <div style="font-size:28px;font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1.1">DASHBOARD DE RESULTADOS</div>
-      <div style="font-size:12px;color:#475569;font-family:Barlow,sans-serif;margin-top:2px" id="dash-updated">Cargando...</div>
+      <div style="font-size:30px;font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1.1">DASHBOARD DE RESULTADOS</div>
+      <div style="font-size:13px;color:#475569;font-family:Barlow,sans-serif;margin-top:2px" id="dash-updated">Cargando...</div>
     </div>
-    <div style="display:flex;gap:8px">
-      <button onclick="loadDashboard()" style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 18px;color:#94a3b8;font-size:14px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='#f97316';this.style.color='#f97316'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">↻ ACTUALIZAR</button>
-      <button onclick="downloadExcel()" style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 18px;color:#94a3b8;font-size:14px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='#10b981';this.style.color='#10b981'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">↓ EXCEL</button>
-      <button onclick="goTo('s-cedis')" style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 18px;color:#94a3b8;font-size:14px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='#ef4444';this.style.color='#ef4444'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">← SALIR</button>
-      <button onclick="confirmarBorrado()" style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 18px;color:#94a3b8;font-size:14px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='#ef4444';this.style.color='#ef4444';this.style.background='#ef444415'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8';this.style.background='#1e293b'">🗑 BORRAR</button>
+    <div style="display:flex;gap:10px;align-items:center">
+      <!-- Navegacion entre pantallas -->
+      <div style="display:flex;gap:4px;background:#1e293b;border-radius:8px;padding:4px">
+        <button id="btn-page1" onclick="showPage(1)" style="background:#f97316;border:none;border-radius:6px;padding:8px 16px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px">● VISTA 1</button>
+        <button id="btn-page2" onclick="showPage(2)" style="background:transparent;border:none;border-radius:6px;padding:8px 16px;color:#64748b;font-size:13px;font-weight:700;cursor:pointer;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px">○ VISTA 2</button>
+      </div>
+      <div style="width:1px;height:30px;background:#334155"></div>
+      <button onclick="loadDashboard()" style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 18px;color:#94a3b8;font-size:13px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='#f97316';this.style.color='#f97316'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">↻ ACTUALIZAR</button>
+      <button onclick="downloadExcel()" style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 18px;color:#94a3b8;font-size:13px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='#10b981';this.style.color='#10b981'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">↓ EXCEL</button>
+      <button onclick="goTo('s-cedis')" style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 18px;color:#94a3b8;font-size:13px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='#ef4444';this.style.color='#ef4444'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8'">← SALIR</button>
+      <button onclick="confirmarBorrado()" style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 18px;color:#94a3b8;font-size:13px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='#ef4444';this.style.color='#ef4444';this.style.background='#ef444415'" onmouseout="this.style.borderColor='#334155';this.style.color='#94a3b8';this.style.background='#1e293b'">🗑 BORRAR</button>
     </div>
   </div>
 
-  <!-- GRID -->
-  <div style="padding:12px 16px;display:grid;grid-template-columns:1fr 1fr 2fr;grid-template-rows:160px auto auto;gap:12px;overflow-y:auto;height:calc(100vh - 80px);box-sizing:border-box">
+  <!-- VISTA 1: KPIs + Participación + Recomendaciones -->
+  <div id="dash-page1" style="padding:16px;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:180px 1fr;gap:14px;height:calc(100vh - 90px);box-sizing:border-box">
 
     <!-- KPI: Mejor evaluado -->
-    <div id="dash-winner" style="background:#0d1b2e;border:1px solid #1e3050;border-top:3px solid #10b981;border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"></div>
+    <div id="dash-winner" style="background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #10b981;border-radius:14px;padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"></div>
 
     <!-- KPI: Total personas -->
-    <div id="dash-total-encuestas" style="background:#0d1b2e;border:1px solid #1e3050;border-top:3px solid #f97316;border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"></div>
+    <div id="dash-total-encuestas" style="background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #f97316;border-radius:14px;padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"></div>
 
     <!-- Participacion CeDis -->
-    <div style="background:#0d1b2e;border:1px solid #1e3050;border-top:3px solid #3b82f6;border-radius:12px;padding:14px 16px">
-      <div style="font-size:11px;font-weight:800;color:#3b82f6;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">PARTICIPACIÓN POR CEDIS</div>
+    <div style="background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #3b82f6;border-radius:14px;padding:16px 18px">
+      <div style="font-size:12px;font-weight:800;color:#3b82f6;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">PARTICIPACIÓN POR CEDIS</div>
       <div id="dash-cedis-chart"></div>
     </div>
 
-    <!-- Recomendaciones (span 2) -->
-    <div style="grid-column:span 2;background:#0d1b2e;border:1px solid #1e3050;border-top:3px solid #f97316;border-radius:12px;padding:16px">
-      <div style="font-size:11px;font-weight:800;color:#f97316;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">RECOMENDACIONES POR ESCÁNER</div>
+    <!-- Recomendaciones (span 3) -->
+    <div style="grid-column:span 3;background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #f97316;border-radius:14px;padding:20px">
+      <div style="font-size:12px;font-weight:800;color:#f97316;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">RECOMENDACIONES POR ESCÁNER</div>
       <div id="dash-rec"></div>
     </div>
 
-    <!-- Promedio secciones -->
-    <div style="background:#0d1b2e;border:1px solid #1e3050;border-top:3px solid #a855f7;border-radius:12px;padding:16px">
-      <div style="font-size:11px;font-weight:800;color:#a855f7;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">PROMEDIO POR SECCIÓN</div>
+  </div>
+
+  <!-- VISTA 2: Promedio secciones + Tendencia -->
+  <div id="dash-page2" style="padding:16px;display:none;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:calc(100vh - 90px);box-sizing:border-box">
+
+    <!-- Promedio secciones (span 2) -->
+    <div style="grid-column:span 2;background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #a855f7;border-radius:14px;padding:20px">
+      <div style="font-size:12px;font-weight:800;color:#a855f7;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">PROMEDIO POR SECCIÓN Y ESCÁNER</div>
       <div id="dash-sections"></div>
     </div>
 
-    <!-- Fila 3: Tendencia recomendaciones -->
-    <div style="grid-column:span 3;background:#0d1b2e;border:1px solid #1e3050;border-top:3px solid #10b981;border-radius:12px;padding:16px">
-      <div style="font-size:11px;font-weight:800;color:#10b981;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">TENDENCIA DE RECOMENDACIONES EN EL TIEMPO</div>
+    <!-- Tendencia (span 2) -->
+    <div style="grid-column:span 2;background:#0d1b2e;border:1px solid #1e3050;border-top:4px solid #10b981;border-radius:14px;padding:20px">
+      <div style="font-size:12px;font-weight:800;color:#10b981;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">TENDENCIA DE RECOMENDACIONES EN EL TIEMPO</div>
       <div id="dash-trend"></div>
     </div>
 
-    <div id="dash-kpis" style="display:none"></div>
   </div>
+
+  <div id="dash-kpis" style="display:none"></div>
 
 <script>
 // ══ DATA ══
@@ -941,6 +953,22 @@ document.getElementById('btn-emp-next').onclick=function(){
 // ══ ADMIN ══
 const ADMIN_PASS='neto2024';
 
+function showPage(n){
+  const p1=document.getElementById('dash-page1');
+  const p2=document.getElementById('dash-page2');
+  const b1=document.getElementById('btn-page1');
+  const b2=document.getElementById('btn-page2');
+  if(n===1){
+    p1.style.display='grid'; p2.style.display='none';
+    b1.style.background='#f97316'; b1.style.color='#fff'; b1.textContent='● VISTA 1';
+    b2.style.background='transparent'; b2.style.color='#64748b'; b2.textContent='○ VISTA 2';
+  } else {
+    p1.style.display='none'; p2.style.display='grid';
+    b2.style.background='#f97316'; b2.style.color='#fff'; b2.textContent='● VISTA 2';
+    b1.style.background='transparent'; b1.style.color='#64748b'; b1.textContent='○ VISTA 1';
+  }
+}
+
 function checkAdminPass(){
   const val=document.getElementById('inp-admin-pass').value;
   const err=document.getElementById('admin-pass-err');
@@ -975,10 +1003,10 @@ function renderDashboard(rows){
   }).filter(s=>s.count>0).sort((a,b)=>b.avg-a.avg);
   document.getElementById('dash-winner').innerHTML=scannerAvgs.length?`
     <div style="text-align:center">
-      <div style="font-size:11px;color:${scannerAvgs[0].color};letter-spacing:2px;font-weight:700;margin-bottom:6px">MEJOR EVALUADO</div>
-      <div style="font-size:20px;font-weight:800;color:${scannerAvgs[0].color};margin-bottom:4px">${scannerAvgs[0].icon} ${scannerAvgs[0].name}</div>
-      <div style="font-size:58px;font-weight:800;color:${scannerAvgs[0].color};line-height:1">${scannerAvgs[0].avg.toFixed(2)}</div>
-      <div style="font-size:12px;color:#475569;margin-top:4px">/5.00 · ${scannerAvgs[0].count} evaluaciones</div>
+      <div style="font-size:12px;color:${scannerAvgs[0].color};letter-spacing:2px;font-weight:700;margin-bottom:8px">MEJOR EVALUADO</div>
+      <div style="font-size:24px;font-weight:800;color:${scannerAvgs[0].color};margin-bottom:6px">${scannerAvgs[0].icon} ${scannerAvgs[0].name}</div>
+      <div style="font-size:68px;font-weight:800;color:${scannerAvgs[0].color};line-height:1">${scannerAvgs[0].avg.toFixed(2)}</div>
+      <div style="font-size:14px;color:#475569;margin-top:6px">/5.00 · ${scannerAvgs[0].count} evaluaciones</div>
     </div>`:'';
 
   // Recomendaciones
@@ -1012,21 +1040,21 @@ function renderDashboard(rows){
         }).join('');
         const top=[...segments].sort((a,b)=>b.v-a.v)[0];
         const topPct=total?Math.round(top.v/total*100):0;
-        return`<div style="background:#080f1e;border-radius:10px;padding:14px 10px;text-align:center;border:1px solid ${s.color}66">
-          <div style="font-size:16px;font-weight:800;color:${s.color};margin-bottom:10px">${s.icon} ${s.name}</div>
+        return`<div style="background:#080f1e;border-radius:12px;padding:16px 12px;text-align:center;border:1px solid ${s.color}66">
+          <div style="font-size:20px;font-weight:800;color:${s.color};margin-bottom:12px">${s.icon} ${s.name}</div>
           <div style="position:relative;display:inline-block">
-            <svg width="160" height="160" viewBox="0 0 200 200" style="display:block;margin:0 auto">
+            <svg width="200" height="200" viewBox="0 0 200 200" style="display:block;margin:0 auto">
               <circle cx="${cx}" cy="${cy}" r="${rv}" fill="none" stroke="#0f172a" stroke-width="${sw}"/>
               ${slices}
             </svg>
             <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
-              <div style="font-size:36px;font-weight:800;color:${top.color}">${topPct}%</div>
-              <div style="font-size:12px;color:#64748b;font-family:Barlow,sans-serif;line-height:1.3;max-width:70px">${top.label}</div>
+              <div style="font-size:44px;font-weight:800;color:${top.color}">${topPct}%</div>
+              <div style="font-size:14px;color:#64748b;font-family:Barlow,sans-serif;line-height:1.3;max-width:80px">${top.label}</div>
             </div>
           </div>
           <div style="margin-top:14px;display:flex;flex-direction:column;gap:7px">
             ${segments.map(x=>`
-              <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px">
+              <div style="display:flex;align-items:center;justify-content:space-between;font-size:15px">
                 <div style="display:flex;align-items:center;gap:7px">
                   <div style="width:11px;height:11px;border-radius:50%;background:${x.color};flex-shrink:0"></div>
                   <span style="color:#94a3b8;font-family:Barlow,sans-serif">${x.label}</span>
@@ -1052,8 +1080,8 @@ function renderDashboard(rows){
           const col=barColor(avg);
           return`<div style="background:#0f172a;border-radius:12px;padding:24px 10px;text-align:center">
             <div style="font-size:88px;margin-bottom:12px">${sec.icon}</div>
-            <div style="font-size:28px;font-weight:800;color:${col};line-height:1">${avg>0?avg.toFixed(1):'—'}</div>
-            <div style="font-size:12px;color:#94a3b8;line-height:1.3;margin-top:4px">${sec.title}</div>
+            <div style="font-size:36px;font-weight:800;color:${col};line-height:1">${avg>0?avg.toFixed(1):'—'}</div>
+            <div style="font-size:14px;color:#94a3b8;line-height:1.3;margin-top:6px">${sec.title}</div>
           </div>`;
         }).join('')}
       </div>
@@ -1075,23 +1103,23 @@ function renderDashboard(rows){
 
   document.getElementById('dash-total-encuestas').innerHTML=`
     <div style="text-align:center">
-      <div style="font-size:11px;color:#f97316;letter-spacing:2px;font-weight:700;margin-bottom:6px">TOTAL PERSONAS</div>
-      <div style="font-size:72px;font-weight:800;color:#f97316;line-height:1">${personasTotal}</div>
-      <div style="font-size:12px;color:#475569;margin-top:4px">encuestados en total</div>
+      <div style="font-size:12px;color:#f97316;letter-spacing:2px;font-weight:700;margin-bottom:8px">TOTAL PERSONAS</div>
+      <div style="font-size:96px;font-weight:800;color:#f97316;line-height:1">${personasTotal}</div>
+      <div style="font-size:14px;color:#475569;margin-top:6px">encuestados en total</div>
     </div>`;
 
   document.getElementById('dash-cedis-chart').innerHTML=`
-    <div style="display:flex;align-items:flex-end;gap:4px;height:100px">
+    <div style="display:flex;align-items:flex-end;gap:5px;height:108px">
       ${cedisTodosConteo.map(c=>{
         const pct=Math.round((c.count/maxBar)*100);
         const col=c.count>0?'#3b82f6':'#1e3050';
         return`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;height:100%">
-          <div style="font-size:12px;font-weight:800;color:${col};min-height:15px">${c.count>0?c.count:''}</div>
+          <div style="font-size:13px;font-weight:800;color:${col};min-height:16px">${c.count>0?c.count:''}</div>
           <div style="width:100%;flex:1;background:#080f1e;border-radius:4px 4px 2px 2px;position:relative;overflow:hidden">
             <div class="bar-fill" style="position:absolute;bottom:0;left:0;right:0;background:${col};border-radius:4px 4px 2px 2px;--w:${pct}%;height:${pct}%"></div>
           </div>
-          <div style="font-size:14px">${c.icon}</div>
-          <div style="font-size:10px;color:${c.count>0?'#64748b':'#1e3050'};text-align:center;line-height:1.1;max-width:40px;font-family:Barlow,sans-serif">${c.name}</div>
+          <div style="font-size:16px">${c.icon}</div>
+          <div style="font-size:11px;color:${c.count>0?'#64748b':'#1e3050'};text-align:center;line-height:1.1;max-width:44px;font-family:Barlow,sans-serif">${c.name}</div>
         </div>`;
       }).join('')}
     </div>`
