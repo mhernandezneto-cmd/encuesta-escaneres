@@ -1210,37 +1210,32 @@ function renderDashboard(rows){
   if(secBarsEl){
     const secColors=['#f97316','#eab308','#3b82f6'];
     const secLabels=SECTIONS.map(s=>s.title);
-    secBarsEl.innerHTML=SCANNERS.map(s=>{
+    const secBarsHTML=SCANNERS.map(s=>{
       const sr=rows.filter(r=>r.Escaner===s.name);
-      if(!sr.length) return `<div style="opacity:.3;margin-bottom:12px;font-size:14px;color:#334155;font-family:Barlow,sans-serif">${s.icon} ${s.name} — sin datos</div>`;
+      if(!sr.length) return '<div style="opacity:.3;margin-bottom:12px;font-size:14px;color:#334155;font-family:Barlow,sans-serif">'+s.icon+' '+s.name+' — sin datos</div>';
       const avgs=SECTIONS.map(sec=>{
         const qids=sec.questions.map(q=>'P_'+q.id);
         let sum=0,cnt=0;
-        sr.forEach(r=>{ qids.forEach(k=>{ const v=parseFloat(r[k]); if(!isNaN(v)&&v>0){sum+=v;cnt++;} }); });
+        for(let ri=0;ri<sr.length;ri++){
+          for(let qi=0;qi<qids.length;qi++){
+            const v=parseFloat(sr[ri][qids[qi]]);
+            if(!isNaN(v)&&v>0){sum+=v;cnt++;}
+          }
+        }
         return cnt>0?(sum/cnt):0;
       });
       const total=avgs.reduce((a,b)=>a+b,0)||1;
-      return `<div style="margin-bottom:16px">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-          <div style="font-size:16px;font-weight:800;color:${s.color}">${s.icon} ${s.name}</div>
-        </div>
-        <div style="display:flex;border-radius:6px;overflow:hidden;height:28px;gap:2px">
-          ${avgs.map((avg,ci)=>{
-            const pct=Math.round((avg/total)*100);
-            return `<div style="flex:${pct};background:${secColors[ci]};display:flex;align-items:center;justify-content:center;min-width:30px;transition:flex .6s ease">
-              <span style="font-size:12px;font-weight:800;color:#fff;white-space:nowrap">${avg.toFixed(1)}</span>
-            </div>`;
-          }).join('')}
-        </div>
-        <div style="display:flex;gap:12px;margin-top:6px">
-          ${avgs.map((avg,ci)=>`
-            <div style="display:flex;align-items:center;gap:4px">
-              <div style="width:8px;height:8px;border-radius:50%;background:${secColors[ci]}"></div>
-              <span style="font-size:11px;color:#64748b;font-family:Barlow,sans-serif">${secLabels[ci]}: ${avg.toFixed(1)}</span>
-            </div>`).join('')}
-        </div>
-      </div>`;
+      const segColors=['#f97316','#eab308','#3b82f6'];
+      const segs=avgs.map((avg,ci)=>{
+        const pct=Math.round((avg/total)*100);
+        return '<div style="flex:'+pct+';background:'+segColors[ci]+';display:flex;align-items:center;justify-content:center;min-width:30px"><span style="font-size:12px;font-weight:800;color:#fff;white-space:nowrap">'+avg.toFixed(1)+'</span></div>';
+      }).join('');
+      const legend=avgs.map((avg,ci)=>{
+        return '<div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;border-radius:50%;background:'+segColors[ci]+'"></div><span style="font-size:11px;color:#64748b;font-family:Barlow,sans-serif">'+secLabels[ci]+': '+avg.toFixed(1)+'</span></div>';
+      }).join('');
+      return '<div style="margin-bottom:16px"><div style="display:flex;align-items:center;margin-bottom:6px"><div style="font-size:16px;font-weight:800;color:'+s.color+'">'+s.icon+' '+s.name+'</div></div><div style="display:flex;border-radius:6px;overflow:hidden;height:28px;gap:2px">'+segs+'</div><div style="display:flex;gap:12px;margin-top:6px">'+legend+'</div></div>';
     }).join('');
+    secBarsEl.innerHTML=secBarsHTML;
   }
 }
 
