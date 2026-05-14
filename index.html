@@ -1231,7 +1231,7 @@ function renderDashboard(rows){
       const legend=avgs.map((avg,ci)=>{
         return '<div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;border-radius:50%;background:'+segColors[ci]+'"></div><span style="font-size:11px;color:#64748b;font-family:Barlow,sans-serif">'+secLabels[ci]+': '+avg.toFixed(1)+'</span></div>';
       }).join('');
-      return '<div style="margin-bottom:16px"><div style="display:flex;align-items:center;margin-bottom:6px"><div style="font-size:16px;font-weight:800;color:'+s.color+'">'+s.icon+' '+s.name+'</div></div><div style="display:flex;border-radius:6px;overflow:hidden;height:28px;gap:2px">'+segs+'</div><div style="display:flex;gap:12px;margin-top:6px">'+legend+'</div></div>';
+      return '<div style="margin-bottom:18px"><div style="display:flex;align-items:center;margin-bottom:8px"><div style="font-size:22px;font-weight:800;color:'+s.color+'">'+s.icon+' '+s.name+'</div></div><div style="display:flex;border-radius:6px;overflow:hidden;height:28px;gap:2px">'+segs+'</div><div style="display:flex;gap:12px;margin-top:6px">'+legend+'</div></div>';
     }).join('');
     secBarsEl.innerHTML=secBarsHTML;
   }
