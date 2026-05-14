@@ -1095,67 +1095,22 @@ function renderDashboard(rows){
 async function loadDashboard(){
   goTo('s-admin');
   document.getElementById('dash-updated').textContent='Cargando datos...';
-  document.getElementById('dash-kpis').innerHTML='<div style="grid-column:1/-1;color:#64748b;font-size:59px;font-family:Barlow,sans-serif;padding:8px 0">Conectando con Google Sheets...</div>';
   let rows=[];
   try{
     const res=await fetch(SHEETS_URL);
     rows=await res.json();
   }catch(e){
-    document.getElementById('dash-kpis').innerHTML='<div style="grid-column:1/-1;color:#ef4444;font-size:59px;font-family:Barlow,sans-serif;padding:8px 0">Error al conectar con Google Sheets.</div>';
+    document.getElementById('dash-updated').textContent='⚠️ Error al conectar con Google Sheets';
+    document.getElementById('dash-winner').innerHTML='<div style="color:#ef4444;font-size:14px;padding:20px;text-align:center">Sin conexión</div>';
     return;
   }
   if(!rows||rows.length===0){
-    document.getElementById('dash-kpis').innerHTML='<div style="grid-column:1/-1;color:#64748b;font-size:59px;font-family:Barlow,sans-serif;padding:8px 0">Sin respuestas registradas todavia.</div>';
-    document.getElementById('dash-updated').textContent='Sin datos';
-    ['dash-winner','dash-total-encuestas','dash-rec','dash-sections','dash-cedis-chart'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='';});
+    document.getElementById('dash-updated').textContent='Sin datos todavía';
+    ['dash-winner','dash-total-encuestas','dash-rec','dash-sections','dash-cedis-chart'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div style="color:#475569;font-size:13px;padding:20px;text-align:center">Sin datos</div>';});
     return;
   }
   allRows=rows;
   renderDashboard(rows);
-}
-
-// ══ AUTO LOGOUT (10 min sin interacción) ══
-let adminTimer=null;
-function resetAdminTimer(){
-  if(document.getElementById('s-admin').classList.contains('active')){
-    clearTimeout(adminTimer);
-    adminTimer=setTimeout(()=>{
-      goTo('s-cedis');
-      document.getElementById('inp-admin-pass').value='';
-    },10*60*1000);
-  }
-}
-['click','touchstart','keydown','mousemove','scroll'].forEach(ev=>
-  document.addEventListener(ev,resetAdminTimer,{passive:true})
-);
-
-// ══ DESCARGAR EXCEL ══
-function downloadExcel(){
-  if(!allRows||allRows.length===0){alert('No hay datos para descargar.');return;}
-  const headers=Object.keys(allRows[0]);
-  const csv=[
-    headers.join(','),
-    ...allRows.map(row=>headers.map(h=>{
-      const val=row[h]===null||row[h]===undefined?'':String(row[h]);
-      return val.includes(',')||val.includes('"')||val.includes('\n')?`"${val.replace(/"/g,'""')}"`:val;
-    }).join(','))
-  ].join('\n');
-  const bom='\uFEFF';
-  const blob=new Blob([bom+csv],{type:'text/csv;charset=utf-8;'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;
-  a.download=`encuesta-escaneres-${new Date().toLocaleDateString('es-MX').replace(/\//g,'-')}.csv`;
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-// ══ BORRAR TODOS LOS DATOS ══
-function confirmarBorrado(){
-  document.getElementById('modal-borrar').style.display='flex';
-}
-function cancelarBorrado(){
-  document.getElementById('modal-borrar').style.display='none';
 }
 async function ejecutarBorrado(){
   document.getElementById('modal-borrar').style.display='none';
