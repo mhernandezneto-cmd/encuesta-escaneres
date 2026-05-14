@@ -972,7 +972,7 @@ function renderDashboard(rows){
 
   // Barras por escaner
   document.getElementById('dash-scanner-bars').innerHTML=`
-    <div style="display:flex;gap:16px;align-items:flex-end;justify-content:center;height:260px;padding:0 20px">
+    <div style="display:flex;gap:20px;align-items:flex-end;justify-content:center;height:300px;padding:0 20px">
       ${SCANNERS.map(s=>{
         const sr=rows.filter(r=>r.Escaner===s.name);
         const avgs=sr.map(r=>parseFloat(r.Promedio)).filter(x=>!isNaN(x));
@@ -981,13 +981,14 @@ function renderDashboard(rows){
         const col=barColor(avg);
         const opacity=sr.length?1:0.3;
         return`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:${opacity}">
-          <div style="font-size:60px;font-weight:800;color:${col}">${sr.length?avg.toFixed(2):'—'}</div>
           <div style="width:100%;flex:1;background:#0f172a;border-radius:10px 10px 4px 4px;position:relative;overflow:hidden;min-height:20px">
-            <div class="bar-fill" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,${col}cc,${col});border-radius:10px 10px 4px 4px;--w:${pct}%;height:${pct}%;transition:height .8s cubic-bezier(.22,1,.36,1)"></div>
+            <div class="bar-fill" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,${col}cc,${col});border-radius:10px 10px 4px 4px;--w:${pct}%;height:${pct}%">
+              <div style="position:absolute;top:12px;left:0;right:0;text-align:center;font-size:42px;font-weight:800;color:#fff;text-shadow:0 1px 6px #00000080">${sr.length?avg.toFixed(2):'—'}</div>
+            </div>
           </div>
-          <div style="font-size:61px">${s.icon}</div>
-          <div style="font-weight:800;font-size:44px;color:${s.color};text-align:center;line-height:1.2">${s.name}</div>
-          <div style="font-size:35px;color:#64748b;font-family:Barlow,sans-serif">${sr.length} eval${sr.length!==1?'s':''}</div>
+          <div style="font-size:32px">${s.icon}</div>
+          <div style="font-weight:800;font-size:30px;color:${s.color};text-align:center;line-height:1.2">${s.name}</div>
+          <div style="font-size:22px;color:#64748b;font-family:Barlow,sans-serif">${sr.length} eval${sr.length!==1?'s':''}</div>
         </div>`;
       }).join('')}
     </div>`;
