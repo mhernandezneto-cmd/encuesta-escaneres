@@ -463,9 +463,6 @@ textarea.txt:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
       <div style="flex:1;background:#1e293b;border-radius:14px;padding:18px;border:1px solid #1e3050">
-        <div style="font-size:44px;font-weight:800;color:#f1f5f9;letter-spacing:.5px;text-transform:uppercase;margin-bottom:18px">Promedio general por escáner</div>
-        <div id="dash-scanner-bars"></div>
-      </div>
       <div style="flex:1;background:#1e293b;border-radius:14px;padding:18px;border:1px solid #1e3050">
         <div style="font-size:44px;font-weight:800;color:#f1f5f9;letter-spacing:.5px;text-transform:uppercase;margin-bottom:18px">Personas por CeDis</div>
         <div id="dash-cedis-chart"></div>
@@ -970,28 +967,6 @@ function renderDashboard(rows){
       <div style="font-size:38px;color:#64748b">/5.00 · ${scannerAvgs[0].count} evaluaciones</div>
     </div>`:'';
 
-  // Barras por escaner
-  document.getElementById('dash-scanner-bars').innerHTML=`
-    <div style="display:flex;gap:20px;align-items:flex-end;justify-content:center;height:320px;padding:0 20px">
-      ${SCANNERS.map(s=>{
-        const sr=rows.filter(r=>r.Escaner===s.name);
-        const avgs=sr.map(r=>parseFloat(r.Promedio)).filter(x=>!isNaN(x));
-        const avg=sr.length&&avgs.length?(avgs.reduce((a,b)=>a+b,0)/avgs.length):0;
-        const pct=Math.max((avg/5)*100, 8);
-        const col=barColor(avg);
-        const opacity=sr.length?1:0.3;
-        return`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;opacity:${opacity}">
-          <div style="font-size:42px;font-weight:800;color:${col};min-height:52px;display:flex;align-items:center">${sr.length?avg.toFixed(2):'—'}</div>
-          <div style="width:100%;flex:1;background:#0f172a;border-radius:10px 10px 4px 4px;position:relative;overflow:hidden;min-height:10px">
-            <div class="bar-fill" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,${col}99,${col});border-radius:10px 10px 4px 4px;--w:${pct}%;height:${pct}%"></div>
-          </div>
-          <div style="font-size:32px">${s.icon}</div>
-          <div style="font-weight:800;font-size:28px;color:${s.color};text-align:center;line-height:1.2">${s.name}</div>
-          <div style="font-size:20px;color:#64748b;font-family:Barlow,sans-serif">${sr.length} eval${sr.length!==1?'s':''}</div>
-        </div>`;
-      }).join('')}
-    </div>`;
-
   // Recomendaciones
   const recLabels={Recomendado:{icon:'✅',color:'#10b981'},'Solo ciertos procesos':{icon:'⚠️',color:'#f97316'},'No recomendado':{icon:'❌',color:'#ef4444'}};
   document.getElementById('dash-rec').innerHTML=`
@@ -1130,7 +1105,7 @@ async function loadDashboard(){
   if(!rows||rows.length===0){
     document.getElementById('dash-kpis').innerHTML='<div style="grid-column:1/-1;color:#64748b;font-size:27px;font-family:Barlow,sans-serif;padding:8px 0">Sin respuestas registradas todavia.</div>';
     document.getElementById('dash-updated').textContent='Sin datos';
-    ['dash-winner','dash-total-encuestas','dash-scanner-bars','dash-rec','dash-sections','dash-cedis-chart'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='';});
+    ['dash-winner','dash-total-encuestas','dash-rec','dash-sections','dash-cedis-chart'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='';});
     return;
   }
   allRows=rows;
@@ -1191,7 +1166,7 @@ async function ejecutarBorrado(){
   allRows=[];
   activeCedis='todos';
   // Reset dashboard UI
-  ['dash-winner','dash-total-encuestas','dash-scanner-bars','dash-rec','dash-sections','dash-cedis-filter'].forEach(id=>{
+  ['dash-winner','dash-total-encuestas','dash-rec','dash-sections','dash-cedis-filter'].forEach(id=>{
     const el=document.getElementById(id);
     if(el)el.innerHTML='';
   });
